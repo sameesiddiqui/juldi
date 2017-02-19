@@ -1,0 +1,44 @@
+#form {
+  text-align: center;
+  border-radius: 15px;
+  border:1px solid #000;
+  background-color: #fff;
+  margin:auto;
+  margin-top: 8%;
+  width: 70%;
+  height: auto;
+
+}
+
+#email {
+  margin-bottom: 2%;
+  width: 50%;
+}
+
+form {
+  width: 100%;
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.place, .time, #email {
+  margin: 2%;
+  padding: 12px 20px;
+  outline: none;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  transition: all .5s;
+}
+
+.place {
+  width: 70%;
+}
+
+.time{
+  width: 20%;
+}
+
+input[type=text]:focus, #email:focus {
+  border: 3px solid #00ccff;
+}
