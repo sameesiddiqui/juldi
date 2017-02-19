@@ -1,34 +1,369 @@
-#form {
-  text-align: center;
-  border-radius: 15px;
-  border:1px solid #000;
+
+html {
+    color: #222;
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+body {
+  font-family: 'Raleway',sans-serif;
+  border: none;
+  width: 100%;
+  margin: 0;
   background-color: #fff;
-  margin:auto;
-  margin-top: 8%;
-  width: 70%;
-  height: auto;
+}
+
+a{
+  text-decoration: none;
+}
+
+#top {
+  text-align: center;
+  height: 100vh;
+}
+
+#top h1{
+  font-size: 7em;
+  color: #0e86f7;
+  padding: 25px;
+  /*/*border:1px solid #000;*/
+  margin-bottom: 0;
+}
+
+#top h2{
+  font-size: 2em;
+    padding: 10px;
+  /*/*border:1px solid #000;*/
+  margin-top: 0;
+}
+
+
+#btncontainer {
+  /*/*border:1px solid #000;*/
+  text-align: center;
+}
+
+#button{
+  display: block;
+  color: #fff;
+  background-color: #0e86f7;
+  font-size: 1.5em;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  /*margin-left: 42.5%;*/
+  margin: 0 auto;
+  /*border: 5px solid #000;*/
+  width: 180px;
+  border-radius: 10px;
+  border: none;
+  transition: .3s;
+}
+
+
+#button:hover {
+  background-color: #329cff;
+}
+
+#imgcontainer {
+  /*/*border:1px solid #000;*/
+  position: absolute;
+  bottom: 0;
+  padding-bottom: 4%;
+  width: 100%;
+}
+
+#imgcontainer img {
+  height: 70px;
+  width: 70px;
+  animation-name: oscillate;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+#imgcontainer img:hover {
 
 }
 
-#email {
+@keyframes oscillate {
+  0%, 50%, 100% {
+    transform: translateY(0px);
+  }
+  25%{
+    transform: translateY(-8px);
+  }
+  75% {
+    transform: translateY(8px);
+  }
+}
+
+#banner {
+  text-align: center;
+  font-weight:300;
+  color: #000;
+  font-size: 1.5em;
+  padding-bottom: 1%;
+  display: flex;
+  flex-direction: column;
+}
+
+#banner p {
+  width: 80%;
+  margin: auto;
+  padding-bottom: 25px;
+  /*border:1px solid #000;*/
+}
+
+#intro {
+  font-size: 2em;
   margin-bottom: 2%;
+  color: #0e86f7;
+}
+
+#text {
+  padding-top: 4%;
+  padding-bottom: 2%;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+#text p{
+  padding-top: 0%;
+  margin-top: 0;
+  display: flex;
+  /*/*border:1px solid #000;*/
+}
+
+#explanation{
+  font-size: 2.5em;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+#how {
+  margin-bottom: -2%;
+  font-size: 1.2em;
+  /*border:1px solid #000;*/
+}
+
+.step {
+  text-align: center;
+  /*border:1px solid #000;*/
+  display: flex;
+}
+
+.step img, .step p{
+  display: inline-block;
+  text-align: center;
+  margin: auto;
+  /*padding: 7%;*/
+  /*border:1px solid #000;*/
+  /*position: relative;
+  top:0;
+  bottom: 0;
+  margin: auto;*/
+}
+
+.step p {
+  /*height: 100%;*/
+  text-align: left;
   width: 50%;
+  padding-top: 7%;
+  padding-bottom: 7%;
+}
+
+img {
+  height: 150px;
+  width: 150px;
+  /*padding: 7%;*/
+}
+
+#benefits {
+  text-align: center;
+  margin-top: 50px;
+  padding: 0;
+  list-style: none;
+
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  -webkit-flex-flow: row wrap;
+  justify-content: space-around;
+  /*/*border:1px solid #000;*/
+}
+
+#benefits_wrapper {
+  width: 100%;
+  /*border:1px solid #000;*/
+}
+
+.pro {
+  width: 290px;
+  text-align: center;
+  font-size: 1.7em;
+  display: inline-block;
+  /*/*border:1px solid #000;*/
+  padding: 20px;
+}
+
+.pro img {
+  height: 100px;
+  width: 100px;
+}
+
+.bodytxt {
+  font-size: .7em;
+}
+
+
+.container{
+  display: block;
+  /*position: absolute;*/
+  margin: auto;
+  height: 220px;
+  width: 100%;
+  /*bottom: 0; left:0; right: 0; top:0;*/
+  padding: 0;
+}
+
+.container h2{
+  text-align: center;
+}
+
+.container ul{
+  list-style: none;
+  /*border:1px solid #000;*/
+  height: 100%;
+  width: 350px;
+  margin: auto;
+  padding: 0;
+}
+
+
+ul li{
+  color: #AAAAAA;
+  display: block;
+  position: relative;
+  float: left;
+  width: 100%;
+  height: 100px;
+	/*border-bottom: 1px solid #111111;*/
+}
+
+ul li input[type=radio]{
+  position: absolute;
+  visibility: hidden;
+}
+
+ul li label{
+  display: block;
+  position: relative;
+  font-weight: 300;
+  font-size: 1.35em;
+  padding: 25px 25px 25px 80px;
+  margin: 10px auto;
+  height: 30px;
+  z-index: 9;
+  cursor: pointer;
+  -webkit-transition: all 0.25s linear;
+}
+
+ul li:hover label{
+	color: #0e86f7;
+}
+
+ul li .check{
+  display: block;
+  position: absolute;
+  border: 5px solid #AAAAAA;
+  border-radius: 100%;
+  height: 25px;
+  width: 25px;
+  top: 30px;
+  left: 20px;
+	z-index: 5;
+	transition: border .25s linear;
+	-webkit-transition: border .25s linear;
+}
+
+ul li:hover .check {
+  border: 5px solid #0e86f7;
+}
+
+ul li .check::before {
+  display: block;
+  position: absolute;
+	content: '';
+  border-radius: 100%;
+  height: 15px;
+  width: 15px;
+  top: 5px;
+	left: 5px;
+  margin: auto;
+	transition: background 0.25s linear;
+	-webkit-transition: background 0.25s linear;
+}
+
+input[type=radio]:checked ~ .check {
+  border: 5px solid #0e86f7;
+}
+
+input[type=radio]:checked ~ .check::before{
+  background: #0e86f7;
+}
+
+input[type=radio]:checked ~ label{
+  color: #0e86f7;
+}
+
+#route {
+  display: block;
+  text-align: center;
+  /*border:1px solid #000;*/
+}
+
+#form {
+  text-align: center;
+  border-radius: 15px;
+  background-color: #fff;
+  margin:auto;
+  margin-top: 8%;
+  width: 80%;
+  height: auto;
+  margin-bottom: 7%;
+
 }
 
 form {
   width: 100%;
   display: inline-block;
+  flex-flow: wrap;
   margin-left: auto;
   margin-right: auto;
 }
 
+form #button {
+  margin-top: 20px;
+  display: block;
+}
+
 .place, .time, #email {
-  margin: 2%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
   padding: 12px 20px;
   outline: none;
   box-sizing: border-box;
   border: 3px solid #ccc;
   transition: all .5s;
+}
+
+#email {
+  margin-bottom: 2%;
+  width: 50%;
 }
 
 .place {
@@ -40,5 +375,82 @@ form {
 }
 
 input[type=text]:focus, #email:focus {
-  border: 3px solid #00ccff;
+  border: 3px solid #0e86f7;
+}
+
+#bottom {
+  text-align: center;
+}
+
+#bottom p{
+
+  font-size: 1em;
+  margin-bottom: 5%;
+}
+
+
+@media only screen and (max-device-width: 480px) {
+  #top h1 {
+    font-size: 3em;
+    /*border:1px solid #000;*/
+    margin-top: 100px;
+  }
+  #top h2 {
+    font-size: 1.5em;
+  }
+  #button {
+    font-size: 1em;
+    width: 100px;
+  }
+
+  #top {
+    height: 95vh;
+    /*border:1px solid #000;*/
+  }
+
+  #btncontainer{
+    /*border:1px solid #000;*/
+  }
+
+  #imgcontainer {
+    margin-top: 170px;
+    /*border:1px solid #000;*/
+    position: relative;
+  }
+
+  #imgcontainer img {
+    height: 40px;
+    width: 40px;
+  }
+
+  #banner {
+    font-size: 1em;
+    width: 100%;
+  }
+
+  #text p {
+    font-size: 1.3em;
+    width: 95%;
+  }
+
+  #explanation {
+    font-size: 1.5em;
+  }
+
+  .pro{
+    padding-top: 0;
+  }
+
+  .step img, .pro img{
+    height: 80px;
+    width: 80px;
+  }
+
+  .step p {
+    font-size: .8em;
+  }
+
+  .place, .time, #email{
+    width: 100%;
+  }
 }

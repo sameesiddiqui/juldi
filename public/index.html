@@ -1,34 +1,183 @@
-<link rel="stylesheet" href="css/main.css">
-<h1>Hello World!</h1>
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<form action="/" method="POST">
-  <script
-    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-    data-key="pk_test_AQ2Qf9lnT83wqSTYUuUqZARt"
-    data-amount="1200"
-    data-name="Juldi Pass"
-    data-label="Get Day Pass"
-    data-description="Day Pass"
-    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-    data-locale="auto">
-  </script>
-</form>
+        <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500" rel="stylesheet">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
 
-<div id="map"></div>
-<div id="form">
-<form action="/route" method="POST">
-  <h2>Tell us about your commute</h2>
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    </head>
+    <body>
 
-  <input id="end" class="place" type="text" name="end" placeholder="where do you need to go?" required>
-  <input class="time" type="text" name="endtime" placeholder="arrival time?" required><br>
-  <input id="start" class="place" type="text" name="start" placeholder="where are you starting?" required>
-  <input class="time" type="text" name="starttime" placeholder="return time?" required><br>
-  <input id="email" type="text" name="email" placeholder="what email should we send your route to?" required><br>
-  <input type="submit" value="Submit">
-</form>
-</div>
+      <div id="top">
+        <h1>Name</h1>
+        <h2>Simplify your commute</h2>
 
-<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAS_3AQ48yIXYe3m6zL0ywlN9MNz18CU3M&libraries=places&callback=initMap"
-        async defer></script>
-<script src="js/main.js"></script>
+        <!-- <p>Join the future of transit</p> -->
+        <div id="btncontainer">
+          <a id="button" href="#form">Ride with us</a>
+        </div>
+
+        <br>
+        <div id="imgcontainer">
+          <a href="#banner">
+          <img src="img/down-arrow.png"/>
+          </a>
+        </div>
+      </div>
+      <div id="banner">
+        <div id="text">
+          <h2 id="intro">Lets face it. Commuting sucks. </h2>
+          <!-- <p>It's frustratingly slow, expensive, and a huge waste of time.</p> -->
+          <p>Name makes your life easier. We group passengers going to the same locations, so
+            you don't waste time stopping or driving in circles.</p>
+          <p>Once we launch your route, you'll be picked up on time everyday, guaranteed a spot, and be able to purchase passes online.</p>
+          <p>Just tell us where you need to go and we'll
+          figure out the best route to get you there - quickly and affordably.</p>
+        </div>
+      </div>
+      <div id="explanation">
+        <p id="how">How does it work?</p>
+        <div class="step">
+
+          <p>1. Select the route you want</p>
+          <img src="img/route.png"/>
+        </div>
+
+        <div class="step">
+
+          <p>2. Purchase a pass</p>
+          <img src="img/www.png"/>
+        </div>
+
+        <div class="step">
+
+          <p>3. Show the driver your pass and you're good to go!</p>
+          <img src="img/smartphone.png"/>
+        </div>
+      </div>
+
+      <div id="btncontainer">
+        <a id="button" href="#form">Sign me up!</a>
+      </div>
+
+      <div id="benefits">
+        <div id="benefits_wrapper">
+          <div class="pro">
+            <p>Save Time</p>
+            <img src="img/clock.png"/>
+            <p class="bodytxt">Your time is valuable. We add hours back to your day by getting you
+              where you need to go quicker than the competition.
+            </p>
+          </div>
+          <div class="pro">
+            <p>Be Productive</p>
+            <img src="img/growth.png"/>
+            <p class="bodytxt">Maximize your day. Get some extra work done. Read that book you
+            haven't gotten around to. Or just take a well deserved nap.
+            </p>
+          </div>
+          <div class="pro">
+            <p>Hassle Free</p>
+            <img src="img/interface.png"/>
+            <p class="bodytxt">No need to wait for a train or sit in traffic. Relax in our premium vans
+              and think about how much simpler your commute is.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="container" id="purchase">
+
+      	<h2>Select your route:</h2>
+
+        <ul>
+        <li>
+          <input type="radio" id="f-option" name="selector" checked="checked">
+          <label for="f-option">First route coming soon</label>
+
+          <div class="check"></div>
+
+        </li>
+
+
+        <li>
+          <input type="radio" id="s-option" name="selector">
+          <label for="s-option">Start a new route</label>
+
+          <div class="check"><div class="inside"></div></div>
+        </li>
+      </ul>
+
+      <div id="route">
+          <h2>Destination trip</h2>
+          <p class="description"><b>Pick up: </b>Vienna Metro North side, 7:45 am</p>
+          <p class="description"><b>Drop off: </b>Metro Center station, 8:45 am</p>
+          <h2>Return trip</h2>
+          <p class="description"><b>Pick up: </b>Metro Center station, 5:15 pm</p>
+          <p class="description"><b>Drop off: </b>Vienna Metro North side, 6:15 pm</p>
+      </div>
+      </div>
+
+      //stripe form
+      <form action="/" method="POST">
+        <script
+          src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="pk_test_AQ2Qf9lnT83wqSTYUuUqZARt"
+          data-amount="1200"
+          data-name="Juldi Pass"
+          data-label="Get Day Pass"
+          data-description="Day Pass"
+          data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+          data-locale="auto">
+        </script>
+      </form>
+
+    -->
+
+      <div id="map"></div>
+      <div id="form">
+        <h2>Tell us about your commute.</h2>
+        <h2>We'll email you when we can launch your route.</h2>
+      <form action="/route" method="POST">
+
+
+        <input id="end" class="place" type="text" name="end" placeholder="where do you need to go?" required>
+        <input class="time" type="text" name="endtime" placeholder="arrival time?" required><br>
+        <input id="start" class="place" type="text" name="start" placeholder="where are you starting?" required>
+        <input class="time" type="text" name="starttime" placeholder="return time?" required><br>
+        <input id="email" type="text" name="email" placeholder="what email should we send your route to?" required><br>
+        <input id="button" type="submit" value="Submit">
+      </form>
+      </div>
+
+      <div id="bottom">
+        <p>Have burning questions? Email hello@name.com for answers.</p>
+      </div>
+
+
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
+        <script src="js/plugins.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAS_3AQ48yIXYe3m6zL0ywlN9MNz18CU3M&libraries=places&callback=initMap"
+                async defer></script>
+        <script src="js/main.js"></script>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='https://www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+        </script>
+    </body>
+</html>
