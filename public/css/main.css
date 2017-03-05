@@ -8,7 +8,6 @@ html {
 body {
   font-family: 'Raleway',sans-serif;
   border: none;
-  width: 100%;
   margin: 0;
   background-color: #fff;
 }
@@ -386,10 +385,16 @@ input[type=text]:focus, #email:focus {
 
   font-size: 1em;
   margin-bottom: 5%;
+  width: 80%;
+  margin-left: 10%;
 }
 
 
 @media only screen and (max-device-width: 480px) {
+  body{
+    border: 1px solid #000;
+  }
+
   #top h1 {
     font-size: 3em;
     /*border:1px solid #000;*/
@@ -429,7 +434,7 @@ input[type=text]:focus, #email:focus {
   }
 
   #text p {
-    font-size: 1.3em;
+    font-size: 1.1em;
     width: 95%;
   }
 
@@ -438,7 +443,11 @@ input[type=text]:focus, #email:focus {
   }
 
   .pro{
-    padding-top: 0;
+    padding:0;
+  }
+
+  .bodytxt {
+    font-size: .5em;
   }
 
   .step img, .pro img{
@@ -447,10 +456,14 @@ input[type=text]:focus, #email:focus {
   }
 
   .step p {
-    font-size: .8em;
+    font-size: .7em;
   }
 
   .place, .time, #email{
     width: 100%;
+  }
+
+  #bottom p{
+    font-size: .7em;
   }
 }

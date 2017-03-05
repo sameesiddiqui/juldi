@@ -9,8 +9,18 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
+var engines = require('consolidate');
+
+app.set('views', __dirname + '/views');
+app.engine('html', engines.mustache);
+app.set('view engine', 'html');
+
 app.get('/', function (req, res) {
   res.render('index.html')
+})
+
+app.get('/route', function (req, res) {
+  res.render('route.html')
 })
 
 app.post('/order', function(req, res){
@@ -79,18 +89,25 @@ app.post('/route', function(req, res){
   // store route data
   connectDB('routes', route)
 
+  var plaintext = "Thanks for registering your commute with us!\n" +
+        "We're currently working on setting up your route. We'll shoot you an email as soon as it's available.\n" +// plain text body
+        "\n-The Juldi Team";
+
+  var htmlText = '<h2>Thanks for registering your commute with us!</h2>' + // html body
+        "<p>We're currently working on setting up your route. We'll shoot you an email as soon as it's available.</p>" +
+        "<br><br><p>-The Juldi Team</p>";
   //send confirmation email
   // setup email data with unicode symbols
     let mailOptions = {
-        from: '"Juldi 👻" <julditest@gmail.com>', // sender address
+        from: '"Juldi" <julditest@gmail.com>', // sender address
         to: route.email, // list of receivers
         subject: 'Thanks for signing up! ✔', // Subject line
-        text: 'Hello world ?', // plain text body
-        html: '<h1>We will email you when ready!</h1>' // html body
+        text: plaintext,
+        html: htmlText
     }
     sendMail(mailOptions)
 
-  res.render('route_confirm.html')
+  res.render('route.html')
 })
 
 app.listen(3000, function () {
