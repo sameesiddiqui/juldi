@@ -3,17 +3,18 @@ var app = express()
 app.use(express.static('public'))
 var mysql = require('mysql')
 var stripe = require("stripe")("sk_test_ZnsVI5btDVpXdqsavajIxPdw")
+var secret = require('./secret')
+
 
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-var engines = require('consolidate');
+app.set('views', __dirname + '/views')
+app.set('view engine', 'html')
+app.engine('html', require('ejs').renderFile)
 
-app.set('views', __dirname + '/views');
-app.engine('html', engines.mustache);
-app.set('view engine', 'html');
 
 app.get('/', function (req, res) {
   res.render('index.html')
@@ -85,7 +86,7 @@ app.post('/route', function(req, res){
     dest : req.body.end,
     desttime : req.body.endtime
   }
-
+  console.log(route)
   // store route data
   connectDB('routes', route)
 
@@ -110,28 +111,28 @@ app.post('/route', function(req, res){
   res.render('route.html')
 })
 
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!')
+app.listen(8080, function () {
+  console.log('Example app listening on port 8080!')
 })
 
 //store data in appropriate database
 function connectDB(db, obj) {
     var pool = mysql.createPool({
-      connectionLimit: 50,
-      host     : 'localhost',
-      user     : 'root',
-      password : '',
+      connectionLimit: 20,
+      host     : secret.dbinfo.host,
+      socketPath: secret.dbinfo.socketPath,
+      user     : secret.dbinfo.user,
+      password : secret.dbinfo.password,
       database : db
     })
+    console.log(pool)
 
   pool.getConnection(function(error, connection){
+    if (error) {
+      console.error(error)
+    }
     var query = connection.query('insert into ' + db + ' set ?', obj, function (error, results, fields) {
-      if (error) {
-        connection.release()
-        console.error(error)
-        res.json({"code" : 100, "status" : "Error in connection database"})
-        return
-      }
+
       console.log(query.sql)
       console.log(results)
     })
@@ -146,8 +147,8 @@ function sendMail(message) {
   let transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-          user: 'julditest@gmail.com',
-          pass: 'h0usec2t'
+          user: secret.emailinfo.user,
+          pass: secret.emailinfo.pass
       }
   })
 
