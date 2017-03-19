@@ -101,7 +101,7 @@ app.post('/route', function(req, res){
   //send confirmation email
   // setup email data with unicode symbols
     let mailOptions = {
-        from: '"Juldi" <julditest@gmail.com>', // sender address
+        from: '"Juldi" <hello@juldi.org>', // sender address
         to: route.email, // list of receivers
         subject: 'Thanks for signing up! ✔', // Subject line
         text: plaintext,
@@ -121,7 +121,7 @@ function connectDB(db, table, obj) {
     var pool = mysql.createPool({
       connectionLimit: 20,
       host     : secret.dbinfo.host,
-      // socketPath: secret.dbinfo.socketPath,
+      socketPath: secret.dbinfo.socketPath,
       user     : secret.dbinfo.user,
       password : secret.dbinfo.password,
       database : db
