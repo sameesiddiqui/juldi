@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500" rel="stylesheet">
-        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
         <!-- Place favicon.ico in the root directory -->
 
         <link rel="stylesheet" href="css/main.css">
@@ -16,8 +16,14 @@
     <body>
 
       <div id="top">
+          <img id="logo" src="img/juldi_logo.png"/>
         <h1>juldi</h1>
         <h2>Simplify your commute</h2>
+
+        <p>Juldi is a shuttle service that groups you with
+          nearby commuters going in the same direction.</p>
+
+
 
         <!-- <p>Join the future of transit</p> -->
         <div id="btncontainer">
@@ -34,16 +40,21 @@
       <div id="banner">
         <div id="text">
           <h2 id="intro">Lets face it. Commuting sucks. </h2>
-          <!-- <p>It's frustratingly slow, expensive, and a huge waste of time.</p> -->
-          <p>Juldi makes your life easier. We group passengers going to the same locations, so
-            you don't waste time stopping or driving in circles.</p>
-          <p>Once we launch your route, you'll be picked up on time everyday, guaranteed a spot, and be able to purchase passes online.</p>
-          <p>Just tell us where you need to go and we'll
-          figure out the best route to get you there - quickly and affordably.</p>
+          <p>It's frustratingly slow, expensive, and a huge waste of time.</p>
+          <p>Juldi is here to help. We save you time and money by providing a new way to get to work.</p>
+
         </div>
       </div>
       <div id="explanation">
-        <p id="how">How does it work?</p>
+
+        <p class="how">How does it work?</p>
+        <div id="descrip">
+          <p>We launch a shuttle route when there are enough commuters going in the same direction</p>
+          <p>Our shuttles pick you up, and take you on a direct route to your destination.</p>
+          <p>Riders split the fare - meaning you get a fast, convenient ride to work, for as little as $5.</p>
+        </div>
+
+        <p class="how">How do I use Juldi?</p>
         <div class="step">
 
           <p>1. Select the route you want</p>
@@ -84,10 +95,10 @@
             </p>
           </div>
           <div class="pro">
-            <p>Hassle Free</p>
-            <img src="img/interface.png"/>
-            <p class="bodytxt">No need to wait for a train or sit in traffic. Relax in our premium vans
-              and think about how much simpler your commute is.
+            <p>Save Money</p>
+            <img src="img/money.png"/>
+            <p class="bodytxt">Stop throwing away money on gas or public transit. Relax in our premium vans
+              and think about how much you're saving everyday.
             </p>
           </div>
         </div>
@@ -142,16 +153,59 @@
 
       <div id="map"></div>
       <div id="form">
-        <h2>Tell us about your commute.</h2>
-        <h2>We'll email you when we can launch your route.</h2>
+        <h2>Tell us about your morning commute.</h2>
+        <h2>We'll email you when we launch your route.</h2>
       <form action="/route" method="POST">
 
-
-        <input id="end" class="place" type="text" name="end" placeholder="where do you need to go?" required>
-        <input class="time" type="text" name="endtime" placeholder="arrival time?" required><br>
-        <input id="start" class="place" type="text" name="start" placeholder="where are you starting?" required>
-        <input class="time" type="text" name="starttime" placeholder="return time?" required><br>
-        <input id="email" type="text" name="email" placeholder="what email should we send your route to?" required><br>
+      <div class="formitem">
+        <!-- <img src="img/home.png"/> -->
+        <input id="start" class="place" type="text" name="start" placeholder="where do you commute from?" required>
+      </div>
+        <br>
+      <div class="formitem">
+        <input id="end" class="place" type="text" name="end" placeholder="where do you commute to?" required>
+      </div>
+        <br>
+      <div class="formitem">
+        <p>when do you need to be there?</p>
+        <select id="hrs" name="hrs">
+          <option>01</option>
+          <option>02</option>
+          <option>03</option>
+          <option>04</option>
+          <option>05</option>
+          <option>06</option>
+          <option>07</option>
+          <option>08</option>
+          <option selected="selected">09</option>
+          <option>10</option>
+          <option>11</option>
+          <option>12</option>
+        </select>
+        <select id="mins" name="mins">
+          <option>00</option>
+          <option>05</option>
+          <option>10</option>
+          <option>15</option>
+          <option>20</option>
+          <option>25</option>
+          <option>30</option>
+          <option>35</option>
+          <option>40</option>
+          <option>45</option>
+          <option>50</option>
+          <option>55</option>
+        </select>
+        <select id="ampm" name="ampm">
+          <option>AM</option>
+          <option>PM</option>
+        </select>
+      </div>
+        <br>
+      <div class="formitem">
+        <input id="email" type="email" name="email" placeholder="what email can we reach you at?" required>
+      </div>
+        <br>
         <input id="button" type="submit" value="Submit">
       </form>
       </div>
@@ -164,9 +218,10 @@
         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
 
+        <script src="js/main.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAS_3AQ48yIXYe3m6zL0ywlN9MNz18CU3M&libraries=places&callback=initMap"
                 async defer></script>
-        <script src="js/main.js"></script>
+
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>

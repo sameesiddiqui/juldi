@@ -82,13 +82,14 @@ app.post('/route', function(req, res){
   var route = {
     email : req.body.email,
     start : req.body.start,
-    starttime : req.body.starttime,
     dest : req.body.end,
-    desttime : req.body.endtime
+    timehrs : req.body.hrs,
+    timemins : req.body.mins,
+    timeampm : req.body.ampm
   }
   console.log(route)
   // store route data
-  connectDB('routes', route)
+  connectDB('routes', 'morningCommute', route)
 
   var plaintext = "Thanks for registering your commute with us!\n" +
         "We're currently working on setting up your route. We'll shoot you an email as soon as it's available.\n" +// plain text body
@@ -116,11 +117,11 @@ app.listen(8080, function () {
 })
 
 //store data in appropriate database
-function connectDB(db, obj) {
+function connectDB(db, table, obj) {
     var pool = mysql.createPool({
       connectionLimit: 20,
       host     : secret.dbinfo.host,
-      socketPath: secret.dbinfo.socketPath,
+      // socketPath: secret.dbinfo.socketPath,
       user     : secret.dbinfo.user,
       password : secret.dbinfo.password,
       database : db
@@ -131,7 +132,10 @@ function connectDB(db, obj) {
     if (error) {
       console.error(error)
     }
-    var query = connection.query('insert into ' + db + ' set ?', obj, function (error, results, fields) {
+    var query = connection.query('insert into ' + table + ' set ?', obj, function (error, results, fields) {
+      if (error) {
+        throw error;
+      }
 
       console.log(query.sql)
       console.log(results)
