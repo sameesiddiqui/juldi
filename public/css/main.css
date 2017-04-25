@@ -22,9 +22,9 @@ a{
 }
 
 #top img{
-  width: 10%;
+  width: 110px;
   height: auto;
-  margin-bottom: 0;
+  margin-bottom: 10px;
   padding: 0;
   /*border: 1px solid #000;*/
 }
@@ -81,7 +81,7 @@ a{
 
 #imgcontainer {
   /*/*border:1px solid #000;*/
-  position: absolute;
+  position: relative;
   bottom: 0;
   padding-bottom: 4%;
   width: 100%;
@@ -444,6 +444,8 @@ input[type=text]:focus, #email:focus {
 
   #descrip p {
     font-size: .7em;
+    width: 80%;
+    margin-left: 10%;
   }
 
   #explanation {
