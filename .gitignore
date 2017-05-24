@@ -1,2 +1,4 @@
 node_modules/*
-config.js
+accounts/config.js
+website/secret.js
+*/node_modules/*
