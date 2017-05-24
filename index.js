@@ -3,7 +3,7 @@ var app = express()
 app.use(express.static('public'))
 var mysql = require('mysql')
 var stripe = require("stripe")("sk_test_ZnsVI5btDVpXdqsavajIxPdw")
-var secret = require('./secret')
+//var secret = require('./secret')
 
 
 const nodemailer = require('nodemailer');
