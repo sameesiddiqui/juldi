@@ -1,0 +1,228 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Juldi: Simplify your commute</title>
+    <meta name="description" content="Juldi is a shuttle service that groups you with
+      nearby commuters going in the same direction.">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500" rel="stylesheet">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+
+</head>
+<body>
+  <div class="container col-12">
+    <nav class="navbar sticky-top navbar-toggleable-sm navbar-light mx-auto col-xl-7 col-lg-8 col-md-10">
+      <button class="navbar-toggler navbar-toggler-right" type="button"
+      data-toggle="collapse" data-target="#navbarSupportedContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="#">
+        <img src="img/juldi_logo.svg" height="60">
+        <span style="color: #0e86f7;" class="align-middle">Juldi</span>
+      </a>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Routes</a>
+          </li>
+          <li class="nav-item pull-xs-right">
+            <a class="nav-link" href="#">Login/Signup</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <header>
+      <div id="header-box">
+        <h2>Make the most of your day with <span style="color: #0e86f7;">Juldi</span></h2>
+      </div>
+      <div class="hero" style="overflow: auto;">
+        <div class="text-center" style="margin-top: 300px;">
+          <a href="#form" class="btn">Ride with us!</a>
+        </div>
+      </div>
+    </header>
+
+    <br>
+    <br>
+    <br>
+
+    <div class="col-xl-7 col-lg-8 col-md-10 mx-auto">
+      <section id="explanation">
+        <h1 class="text-center">What is Juldi?</h2>
+        <h3>
+          Juldi takes you to work on a personalized shuttle route driven by a
+          professional. Just tell us where you need to go, and we'll handle the
+          rest.
+        </h3>
+      </section>
+
+      <br>
+
+      <section>
+        <h1 class="display-5 text-center">Why ride with us?</h1>
+        <div class="card-deck col-xl-10 col-sm-12 col-10 mx-auto">
+          <div class="card">
+            <img class="img-50 mx-auto" src="img/growth.png"/>
+            <p></p>
+            <h4 class="card-title text-center">Hassle Free</h4>
+            <p class="card-text">
+              Let us handle the annoying parts of getting to work. You deserve to
+              relax in our premium shuttles.
+            </p>
+          </div>
+          <div class="card">
+            <img class="img-50 mx-auto" src="img/clock.png"/>
+            <p></p>
+            <h4 class="card-title text-center">Save Time</h4>
+            <p class="card-text">
+              Add hours back to your day. Get some extra work done, read that book
+              you haven't gotten around to, or just take a well deserved nap.
+            </p>
+          </div>
+          <div class="card">
+            <img class="img-50 mx-auto" src="img/money.png"/>
+            <p></p>
+            <h4 class="card-title text-center">Save Money</h4>
+            <p class="card-text">
+              Spend less going to work. With our flat rate your costs are predictable
+              and low.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <h2 class="display-5">How do I sign up?</h2>
+      <div class="card-deck col-xl-10 col-sm-12 col-10 mx-auto">
+        <div class="card">
+          <img class="img-50 mx-auto" src="img/route.png"/>
+          <p></p>
+          <h4 class="card-title text-center">Step 1</h4>
+          <p>
+            Enter your commute information and purchase a pass.
+          </p>
+        </div>
+
+        <div class="card">
+          <img class="img-50 mx-auto" src="img/www.png"/>
+          <p></p>
+          <h4 class="card-title text-center">Step 2</h4>
+          <p>
+            When we launch your route, we'll send you your route information.
+          </p>
+        </div>
+
+        <div class="card">
+          <img class="img-50 mx-auto" src="img/smartphone.png"/>
+          <p></p>
+          <h4 class="card-title text-center">Step 3</h4>
+          <p>
+            Show the driver your pass and you're good to go!
+          </p>
+        </div>
+      </div>
+
+      <div class="center-btn">
+        <a class="btn" href="#form">Sign me up!</a>
+      </div>
+
+      <div id="form">
+        <h2>Tell us about your morning commute.</h2>
+        <h2>We'll email you when we launch your route.</h2>
+      <form action="/route" method="POST">
+
+      <div class="formitem">
+        <input id="start" class="place" type="text" name="start" placeholder="what is your starting address?" required>
+      </div>
+        <br>
+
+      <div class="row">
+
+      </div>
+      <div class="formitem">
+        <input id="end" class="place" type="text" name="end" placeholder="where do you commute to?" required>
+      </div>
+        <br>
+      <div class="formitem">
+        <p>when do you need to be there?</p>
+        <select id="hrs" name="hrs">
+          <option>01</option>
+          <option>02</option>
+          <option>03</option>
+          <option>04</option>
+          <option>05</option>
+          <option>06</option>
+          <option>07</option>
+          <option>08</option>
+          <option selected="selected">09</option>
+          <option>10</option>
+          <option>11</option>
+          <option>12</option>
+        </select>
+        <select id="mins" name="mins">
+          <option>00</option>
+          <option>05</option>
+          <option>10</option>
+          <option>15</option>
+          <option>20</option>
+          <option>25</option>
+          <option>30</option>
+          <option>35</option>
+          <option>40</option>
+          <option>45</option>
+          <option>50</option>
+          <option>55</option>
+        </select>
+        <select id="ampm" name="ampm">
+          <option>AM</option>
+          <option>PM</option>
+        </select>
+      </div>
+        <br>
+      <div class="formitem">
+        <input id="email" type="email" name="email" placeholder="what email can we reach you at?" required>
+      </div>
+        <br>
+        <div class="center-btn">
+          <input class="btn" type="submit" value="Submit">
+        </div>
+      </form>
+      </div>
+
+      <div id="bottom">
+        <p>Have burning questions? Email hello@juldi.org for answers.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+  <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script src="js/main.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAS_3AQ48yIXYe3m6zL0ywlN9MNz18CU3M&libraries=places&callback=initMap"
+            async defer></script>
+
+
+            <script>
+              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+              })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+              ga('create', 'UA-93997211-1', 'auto');
+              ga('send', 'pageview');
+
+            </script>
+</body>
+</html>
