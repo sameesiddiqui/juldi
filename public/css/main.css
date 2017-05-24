@@ -7,7 +7,6 @@ body {
   font-family: 'Raleway',sans-serif;
   border: none;
   margin: 0;
-  background-color: #eee;
 }
 
 a{
@@ -30,6 +29,10 @@ header h2{
   margin-bottom: 20px;
 }
 
+.borders {
+  border: 1px solid black;
+}
+
 .hero {
   height: 400px;
   background-image: url("../img/hero.jpg");
@@ -45,6 +48,7 @@ header h2{
 
 .container {
   background-color: white;
+  padding: 0;
 }
 
 .jumbotron {
