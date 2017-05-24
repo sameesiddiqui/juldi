@@ -7,32 +7,44 @@ body {
   font-family: 'Raleway',sans-serif;
   border: none;
   margin: 0;
-  background-color: #fff;
+  background-color: #eee;
 }
 
 a{
   text-decoration: none;
 }
 
-header {
-  position: relative;
-  background-color: #fff;
-  text-align: center;
-  height: 100vh;
+h1 {
+  color: #0e86f7;
 }
 
-header h1{
-  font-size: 6rem;
-  color: #0e86f7;
-  padding: 25px;
-  margin-bottom: 0.2em;
-  margin-top: -7%;
+header {
+  position: relative;
 }
 
 header h2{
-  font-size: 2em;
+  font-size: 1.75em;
+  font-weight: normal;
+  color: #555555;
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
+}
+
+.hero {
+  height: 400px;
+  background-image: url("../img/hero.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#header-box {
+  padding: 10px;
+  background-color: white;
+}
+
+.container {
+  background-color: white;
 }
 
 .jumbotron {
@@ -54,7 +66,7 @@ header h2{
   font-size: 1.5em;
   padding-top: 2%;
   padding-bottom: 2%;
-  transition: .2s;
+  transition: box-shadow .2s;
 }
 
 
@@ -63,30 +75,22 @@ header h2{
   box-shadow: 0 0.1em 0.3em rgba(0, 0, 0, 0.5);
 }
 
-#drop-arrow {
-  position: absolute;
-  bottom: 10%;
-  left: calc(50% - 35px);
+.navbar {
+  background-color: white;
+  font-size: 1.5rem;
 }
 
-#drop-arrow img {
-  width: 70px;
-  animation-name: oscillate;
-  animation-duration: 2s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
+.navbar-brand {
+  font-size: 1.75rem;
 }
 
-@keyframes oscillate {
-  0%, 50%, 100% {
-    transform: translateY(0px);
-  }
-  25%{
-    transform: translateY(-8px);
-  }
-  75% {
-    transform: translateY(8px);
-  }
+.navbar-toggler {
+  margin-top: 15px;
+  border: none;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: #0e86f7;
 }
 
 .card {
@@ -105,6 +109,10 @@ input[type=radio]:checked ~ .check::before{
 
 input[type=radio]:checked ~ label{
   color: #0e86f7;
+}
+
+.img-50 {
+  width: 50%;
 }
 
 #form {

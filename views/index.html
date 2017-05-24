@@ -11,83 +11,105 @@
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
     <!-- Place favicon.ico in the root directory -->
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
 
 </head>
 <body>
-  <div class="container col-11 col-xl-6 col-md-8">
-    <header>
-      <img class="img-fluid col-4" src="img/juldi_logo.png"/>
-      <h1 style="font-weight: bold">juldi</h1>
-      <h2 style="font-weight: bold">Juldi saves you time, money, and hassle by giving you a new way to get to work</h2>
-
-      <a class="btn" href="#form">Ride with us</a>
-
-      <br>
-
-      <a id="drop-arrow" href="#explanation">
-        <img src="img/down-arrow.png"/>
+  <div class="container col-12 col-xl-7 col-lg-8 col-md-10">
+    <nav class="navbar sticky-top navbar-toggleable-sm navbar-light mx-auto">
+      <button class="navbar-toggler navbar-toggler-right" type="button"
+      data-toggle="collapse" data-target="#navbarSupportedContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="#">
+        <img src="img/juldi_logo.svg" height="60">
+        <span style="color: #0e86f7;" class="align-middle">Juldi</span>
       </a>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <header>
+      <div id="header-box">
+        <h2>Make the most of your day with <span style="color: #0e86f7;">Juldi</span></h2>
+      </div>
+      <div class="hero">
     </header>
 
-    <section id="explanation">
-      <h2 class="display-5">What is Juldi?</h2>
-      <p class="lead">Juldi is a faster and cheaper way to get to work. We group you with
-        nearby commuters going in the same direction, and create a shuttle route that's customized for you.</p>
+    <br>
+    <br>
+    <br>
 
-      <p class="lead">Whether you want to spend less, maximize your day, or just simplify your life, Juldi makes it possible.</p>
+    <section id="explanation">
+      <h1 class="text-center">What is Juldi?</h2>
+      <h3>
+        Juldi takes you to work on a personalized shuttle route driven by a
+        professional. Just tell us where you need to go, and we'll handle the
+        rest.
+      </h3>
     </section>
 
+    <br>
+
     <section>
-      <h2 class="display-5">How does it work?</h2>
-      <p class="lead">Once you tell us where you need to go, we determine the most direct route to get you there.</p>
-      <p class="lead">After you have a route, our shuttles will pick you up every day, and take you to your destination</p>
-      <p class="lead">Riders split the fare - meaning you get a fast, convenient ride to work, for as little as $5.</p>
+      <h1 class="display-5 text-center">Why ride with us?</h1>
+      <div class="card-deck col-xl-10 col-sm-12 col-10 mx-auto">
+        <div class="card">
+          <img class="img-50 mx-auto" src="img/growth.png"/>
+          <p></p>
+          <h4 class="card-title text-center">Hassle Free</h4>
+          <p class="card-text">
+            Let us handle the annoying parts of getting to work. You deserve to
+            relax in our premium shuttles.
+          </p>
+        </div>
+        <div class="card">
+          <img class="img-50 mx-auto" src="img/clock.png"/>
+          <p></p>
+          <h4 class="card-title text-center">Save Time</h4>
+          <p class="card-text">
+            Add hours back to your day. Get some extra work done, read that book
+            you haven't gotten around to, or just take a well deserved nap.
+          </p>
+        </div>
+        <div class="card">
+          <img class="img-50 mx-auto" src="img/money.png"/>
+          <p></p>
+          <h4 class="card-title text-center">Save Money</h4>
+          <p class="card-text">
+            Spend less going to work. With our flat rate your costs are predictable
+            and low.
+          </p>
+        </div>
+      </div>
     </section>
 
     <h2 class="display-5">How do I sign up?</h2>
-    <div class="card">
-      <h4 class="card-title text-center">1. Enter your commute information</h4>
-      <img class="img-fluid mx-auto" src="img/route.png"/>
-    </div>
+    <div class="card-deck">
+      <div class="card">
+        <h4 class="card-title text-center">1. Enter your commute information</h4>
+        <img class="mx-auto col-6" src="img/route.png"/>
+      </div>
 
-    <div class="card">
-      <h4 class="card-title text-center">2. Purchase a pass when we launch your route</h4>
-      <img class="img-fluid mx-auto" src="img/www.png"/>
-    </div>
+      <div class="card">
+        <h4 class="card-title text-center">2. Purchase a pass when we launch your route</h4>
+        <img class="mx-auto col-6" src="img/www.png"/>
+      </div>
 
-    <div class="card">
-      <h4 class="card-title text-center">3. Show the driver your pass and you're good to go!</h4>
-      <img class="img-fluid mx-auto" src="img/smartphone.png"/>
+      <div class="card">
+        <h4 class="card-title text-center">3. Show the driver your pass and you're good to go!</h4>
+        <img class="mx-auto col-6" src="img/smartphone.png"/>
+      </div>
     </div>
 
     <div class="center-btn">
       <a class="btn" href="#form">Sign me up!</a>
-    </div>
-
-    <div class="card-deck">
-      <div class="card">
-        <h4 class="card-title text-center">Save Time</h4>
-        <img class="img-fluid mx-auto" src="img/clock.png"/>
-        <p class="card-text">Your time is valuable. We add hours back to your day by getting you
-          where you need to go quicker than the competition.
-        </p>
-      </div>
-      <div class="card">
-        <h4 class="card-title text-center">Be Productive</h4>
-        <img class="img-fluid mx-auto" src="img/growth.png"/>
-        <p class="card-text">Maximize your day. Get some extra work done. Read that book you
-        haven't gotten around to. Or just take a well deserved nap.
-        </p>
-      </div>
-      <div class="card">
-        <h4 class="card-title text-center">Save Money</h4>
-        <img class="img-fluid mx-auto" src="img/money.png"/>
-        <p class="card-text">Stop wasting money on commuting. Relax in our premium vans
-          and think about how much you're saving.
-        </p>
-      </div>
     </div>
 
     <div id="form">
