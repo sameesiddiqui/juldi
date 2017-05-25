@@ -101,6 +101,11 @@ header h2{
   box-shadow: 0 0.2em 0.3em rgba(0, 0, 0, 0.5);
 }
 
+.card-flow {
+  box-shadow: none;
+  border: none;
+}
+
 input[type=radio]:checked ~ .check {
   border: 5px solid #0e86f7;
 }
