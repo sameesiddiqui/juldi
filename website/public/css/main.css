@@ -71,7 +71,6 @@ header h2{
   transition: box-shadow .2s;
 }
 
-
 .btn:hover {
   color: #fff;
   box-shadow: 0 0.1em 0.3em rgba(0, 0, 0, 0.5);
@@ -99,6 +98,11 @@ header h2{
   padding: 1em;
   margin: 2em 0;
   box-shadow: 0 0.2em 0.3em rgba(0, 0, 0, 0.5);
+}
+
+.card-flow {
+  box-shadow: none;
+  border: none;
 }
 
 input[type=radio]:checked ~ .check {
