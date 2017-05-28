@@ -98,6 +98,10 @@ header h2{
   color: #0e86f7;
 }
 
+.navbar-light .navbar-nav .nav-link:hover {
+  color: #1af;
+}
+
 .card {
   padding: 1em;
   margin: 2em 0;
