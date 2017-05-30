@@ -2,3 +2,4 @@ node_modules/
 accounts/config.js
 website/secret.js
 .DS_Store
+.eslintrc
