@@ -7,10 +7,19 @@ var methodOverride = require('method-override')
 var session = require('express-session')
 var passport = require('passport')
 var LocalStrategy = require('passport-local')
-var TwitterStrategy = require('passport-twitter')
-var GoogleStrategy = require('passport-google')
-var FacebookStrategy = require('passport-facebook')
+// var TwitterStrategy = require('passport-twitter')
+// var GoogleStrategy = require('passport-google')
+// var FacebookStrategy = require('passport-facebook')
+var MySQLStore = require('express-mysql-session')(session);
+var options = {
+    host: 'localhost',
+    port: 3306,
+    user: 'root',
+    password: '',
+    database: 'session_test'
+};
 
+var sessionStore = new MySQLStore(options);
 //We will be creating these two files shortly
 var config = require('./config.js') //config file contains all tokens and other private info
 var funct = require('./functions.js') //funct file contains our helper functions for our Passport and database work
@@ -26,7 +35,7 @@ passport.serializeUser(function(user, done) {
 });
 
 passport.deserializeUser(function(obj, done) {
-  console.log("deserializing " + obj);
+  console.log("deserializing " + JSON.stringify(obj));
   done(null, obj);
 });
 
@@ -70,12 +79,12 @@ passport.use('local-signup', new LocalStrategy(
 
 //===============EXPRESS================
 // Configure Express
-app.use(logger('combined'))
+
 app.use(cookieParser())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-app.use(methodOverride('X-HTTP-Method-Override'))
-app.use(session({secret: 'supernova', saveUninitialized: true, resave: true}))
+//app.use(methodOverride('X-HTTP-Method-Override'))
+app.use(session({ key: 'gort', secret: 'supernova', store: sessionStore, saveUninitialized: true, resave: true}))
 app.use(passport.initialize())
 app.use(passport.session())
 
@@ -133,6 +142,7 @@ app.post('/login', passport.authenticate('local-signin', {
 app.get('/logout', function(req, res){
   var name = req.user.username
   console.log("Logging out "+ name)
+  console.log(JSON.stringify(req.logout))
   req.logout()
   res.redirect('/')
   req.session.notice = "You've successfully been logged out of " + name + "!"
