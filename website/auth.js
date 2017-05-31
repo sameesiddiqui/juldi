@@ -19,7 +19,7 @@ exports.localReg = (regData) => {
       // check if we already have an email registered
       // if not, go through process of creating user in DB
       // sanitize this query with ?
-      let query = connection.query("select email from users where email = '"
+      connection.query("select email from users where email = '"
       + regData.email + "'", (error, results, fields) => {
         if (results[0] !== regData.email) {
           let hash = bcrypt.hashSync(regData.password, 10);

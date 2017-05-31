@@ -1,28 +1,82 @@
-var express = require('express')
-var app = express()
-app.use(express.static('public'))
-var mysql = require('mysql')
-var stripe = require("stripe")("sk_test_ZnsVI5btDVpXdqsavajIxPdw")
-//var secret = require('./secret')
-
-
+// Update package.json
+const express = require('express')
+const mysql = require('mysql')
+const stripe = require("stripe")("sk_test_ZnsVI5btDVpXdqsavajIxPdw")
+const secret = require('./secret')
+const session = require('express-session')
+const passport = require('passport')
+const LocalStrategy = require('passport-local')
+const MySQLStore = require('express-mysql-session')(session);
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({extended: true}));
+const cookieParser = require('cookie-parser');
+const auth = require('./auth');
+const app = express();
+
+// Replace options with a secret.js
+const options = {
+  host: 'localhost',
+  port: 3306,
+  user: 'root',
+  password: '',
+  database: 'session_test',
+};
+const sessionStore = new MySQLStore(options);
+
+app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(session({ key: 'login', secret: 'catdogwaterbottle', store: sessionStore, saveUninitialized: true, resave: true }));
+app.use(passport.initialize());
+app.use(passport.session());
 
-app.set('views', __dirname + '/views')
-app.set('view engine', 'html')
-app.engine('html', require('ejs').renderFile)
+app.set('views', __dirname + '/views');
+app.set('view engine', 'html');
+app.engine('html', require('ejs').renderFile);
 
+//========PASSPORT=========
+passport.serializeUser((userID, done) => {
+  console.log('serializing ' + userID);
+  done(null, userID);
+});
+
+passport.deserializeUser((obj, done) => {
+  console.log('deserializing ' + JSON.stringify(obj));
+  done(null, obj);
+});
+
+// Local signin
+passport.use('local-signin', new LocalStrategy(
+  { passReqToCallback: true },
+  (req, email, password, done) => {
+    auth.localAuth(email, password)
+    .then((userID) => {
+      console.log('Logged in: ' + userID);
+      return done(null, userID);
+    }, (failure) => {
+      console.log('Couldn\'t log in!!!');
+      return done(null, failure);
+    }).catch(console.log);
+  },
+));
+
+passport.use('local-signup', new LocalStrategy(
+  { passReqToCallback: true },
+  (req, email, password, done) => {
+    auth.localReg(email, password)
+    .then((userID) => {
+
+    })
+  }
+));
 
 app.get('/', function (req, res) {
-  res.render('index.html')
-})
+  res.render('index.html');
+});
 
 app.get('/route', function (req, res) {
-  res.render('route.html')
-})
+  res.render('route.html');
+});
 
 app.post('/order', function(req, res){
 // Set your secret key: remember to change this to your live secret key in production
