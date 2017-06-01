@@ -127,3 +127,8 @@ header h2{
   width: 80%;
   margin-left: 10%;
 }
+
+#map {
+  height: 400px;
+  width: 600px;
+}
