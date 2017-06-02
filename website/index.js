@@ -20,8 +20,8 @@ app.get('/', function (req, res) {
   res.render('index.html')
 })
 
-app.get('/routes', function (req, res) {
-  res.render('routes.html')
+app.get('/faq', function (req, res) {
+  res.render('faq.html')
 })
 
 app.post('/order', function(req, res){
