@@ -1,4 +1,10 @@
 function initMap() {
+  var start = document.getElementById('start-loc');
+  var end = document.getElementById('end-loc');
+
+  var autocomplete = new google.maps.places.Autocomplete(start);
+  var autocomplete2 = new google.maps.places.Autocomplete(end);
+
   var directionsService = new google.maps.DirectionsService;
   var directionsDisplay = new google.maps.DirectionsRenderer;
   var map = new google.maps.Map(document.getElementById('map'), {
