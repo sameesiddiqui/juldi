@@ -133,6 +133,10 @@ header h2{
   text-align: center;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
 #bottom p{
   font-size: 1em;
   margin-bottom: 5%;
