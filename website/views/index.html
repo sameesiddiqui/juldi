@@ -30,7 +30,7 @@
       </div>
       <div class="hero" style="overflow: auto;">
         <div class="text-center" style="margin-top: 300px;">
-          <a class="btn" href="/routes">Ride with us!</a>
+          <a class="btn btn-lg" href="/routes">Ride with us!</a>
         </div>
       </div>
     </header>
@@ -130,7 +130,7 @@
           VRE to Downtown Washington (Farragut North station), for only $7 each
           way.
         </h4>
-        <p>Arrives in DC at 8:30 AM, leaves at 5:30 PM</p>
+        <p class="text-center">Arrives in DC at 8:30 AM, leaves at 5:30 PM</p>
 
         <br>
         <br>
@@ -138,7 +138,7 @@
         <div id="map"></div>
 
         <div class="card-deck">
-          <div class="card card-disabled">
+          <div class="card card-disabled hidden-xs-down">
             <h4 class="text-center">Daily Pass</h4>
             <p>
               Coming soon!
@@ -151,7 +151,7 @@
             <p></p>
             <p class="text-center">$70 total</p>
           </div>
-          <div class="card card-disabled">
+          <div class="card card-disabled hidden-xs-down">
             <h4 class="text-center">Monthly Pass</h4>
             <p>
               Coming soon!
@@ -159,6 +159,73 @@
           </div>
         </div>
       </section>
+
+      <br>
+      <br>
+
+      <section class="col-xl-10 col-sm-12 col-11 mx-auto">
+        <h2 class="display-5 text-center">Don't see a route for you?</h2>
+        <h4 class="text-center">Let us know what areas we should start serving.</h4>
+        <br>
+        <form action="/route" method="POST">
+          <fieldset class="form-group">
+            <label for="start">Start location</label>
+            <input type="text" class="form-control" id="start-loc" placeholder="What's your start address?" required>
+          </fieldset>
+          <fieldset class="form-group">
+            <label for="end">End location</label>
+            <input type="text" class="form-control" id="end-loc" placeholder="What's your end address?" required>
+          </fieldset>
+          <fieldset class="form-group row">
+            <div class="col-sm-6">
+              <label for="arrival">When do you need to be at work?</label>
+              <select class="form-control" id="arrival-time" required>
+                <option>7:00 AM</option>
+                <option>7:15 AM</option>
+                <option>7:30 AM</option>
+                <option>7:45 AM</option>
+                <option>8:00 AM</option>
+                <option>8:15 AM</option>
+                <option>8:30 AM</option>
+                <option>8:45 AM</option>
+                <option selected>9:00 AM</option>
+                <option>9:15 AM</option>
+                <option>9:30 AM</option>
+                <option>9:45 AM</option>
+                <option>10:00 AM</option>
+                <option>10:15 AM</option>
+                <option>10:30 AM</option>
+                <option>10:45 AM</option>
+                <option>11:00 AM</option>
+              </select>
+            </div>
+            <div class="col-sm-6">
+              <label for="leave">When do you leave work?</label>
+              <select class="form-control" id="leave-time" required>
+                <option>4:00 PM</option>
+                <option>4:15 PM</option>
+                <option>4:30 PM</option>
+                <option>4:45 PM</option>
+                <option selected>5:00 PM</option>
+                <option>5:15 PM</option>
+                <option>5:30 PM</option>
+                <option>5:45 PM</option>
+                <option>6:00 PM</option>
+                <option>6:15 PM</option>
+              </select>
+            </div>
+          </fieldset>
+          <fieldset class="form-group">
+            <label for="email" required>Email</label>
+            <input class="form-control" type="email" id="email" placeholder="Where can we reach you?">
+          </fieldset>
+          <br>
+          <button type="submit" class="btn">Submit</button>
+        </form>
+      </section>
+
+      <br>
+      <br>
 
       <div id="bottom">
         <p>Have burning questions? Email hello@juldi.org for answers.</p>
@@ -174,7 +241,7 @@
   <script src="js/main.js"></script>
   <script src="js/routes.js"></script>
   <script async defer
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZ73C8zs1E16Hq8qzX7zpDpaYBU1XcYtQ&callback=initMap">
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZ73C8zs1E16Hq8qzX7zpDpaYBU1XcYtQ&callback=initMap&libraries=places">
   </script>
 
   <script>
