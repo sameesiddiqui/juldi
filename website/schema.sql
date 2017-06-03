@@ -17,6 +17,14 @@ CREATE TABLE morningCommute (
   timeampm VARCHAR(2) NOT NULL
 );
 
+CREATE TABLE orders (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR (25) NOT NULL,
+  email VARCHAR (50) NOT NULL,
+  zip VARCHAR (6) NOT NULL,
+  description VARCHAR(50) NOT NULL
+);
+
 CREATE TABLE commuteInfo (
   id INT PRIMARY KEY AUTO_INCREMENT,
   email VARCHAR (50) NOT NULL,

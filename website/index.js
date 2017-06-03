@@ -32,6 +32,7 @@ app.get('/commuteinfo', function (req, res) {
 
   //=========STRIPE PAYMENT HANDLING
 app.post('/order', function (req, res) {
+  console.log(req.body)
   var token = req.body.stripeToken
 
   var charge = stripe.charges.create({
@@ -55,14 +56,15 @@ app.post('/order', function (req, res) {
     }
     // order object to store
     var order = {
-      name: charge.source.name,
-      email: charge.source.email,
+      name: req.body.cardholder_name,
+      email: req.body.cardholder_email,
+      zip: req.body.address_zip,
       description: charge.description
     }
     // console.log(order)
 
     //store charge data if successful
-    connectDB('orders', order)
+    connectDB('routes', 'orders', order)
 
 
     var plaintext = "Thanks for deciding to ride with Juldi!\n" +
@@ -93,11 +95,11 @@ app.post('/order', function (req, res) {
       sendMail(mailOptions)
 
   })
-  res.render("order_confirm.html")
+  res.render('order_confirm.html')
 })
 
 
-//=========SIGN UP FORM
+// =========COMMUTE INFO FORM
 
 app.post('/commuteinfo', function (req, res) {
   var promise = new Promise(function (resolve, reject) {
@@ -173,7 +175,7 @@ app.post('/commuteinfo', function (req, res) {
 })
 
 app.listen(8080, function () {
-  console.log('Example app listening on port 8080!')
+  console.log('Juldi listening on port 8080!')
 })
 
 //store data in appropriate database

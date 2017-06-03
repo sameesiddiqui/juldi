@@ -18,23 +18,24 @@
 </head>
 <body>
   <script src="https://js.stripe.com/v3/"></script>
+
   <div class="modal fade" id="week-pass" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-body">
-          <form action="/order" method="POST">
+          <form id="payment-form" action="/order" method="POST">
             <div class="group">
               <label>
-                <span>Name</span>
-                <input name="cardholder-name" class="field" placeholder="Your name" required>
+                <span>Full Name</span>
+                <input name="cardholder_name" class="field" placeholder="Your name" required>
               </label>
               <label>
                 <span>Email</span>
-                <input class="field" placeholder="you@example.com" type="email" required>
+                <input name="cardholder_email" class="field" placeholder="you@example.com" type="email" required>
               </label>
               <label>
                 <span>ZIP Code</span>
-                <input class="field" name="address-zip" required>
+                <input class="field" name="address_zip" required>
               </label>
             </div>
             <div class="group">
@@ -46,8 +47,7 @@
             <button class="checkout-btn" type="submit">Pay $70</button>
             <div class="outcome">
               <div class="error" role="alert"></div>
-              <div class="success">
-                Success! Your Stripe token is <span class="token"></span>
+              <div class="success">Success!<span class="token"></span>
               </div>
             </div>
           </form>
@@ -55,6 +55,7 @@
       </div>
     </div>
   </div>
+
   <div class="container col-12">
     <nav class="navbar">
       <div class="mx-auto" href="/">
@@ -164,16 +165,15 @@
       <br>
 
       <section id="pilot" class="col-xl-10 col-sm-12 col-11 mx-auto">
+
         <h2 class="display-5 text-center">Solve your commute for good</h2>
+        <br>
         <h4 style="font-weight: normal;">
           Try out our first route with a one week pass. A non-<wbr>stop ride from Burke
           VRE to Downtown Washington (Farragut North station), for only $7 each
           way.
         </h4>
         <p class="text-center">*Route will start on June 19. Arrives in DC at 8:30 AM, leaves at 5:30 PM</p>
-
-        <br>
-        <br>
 
         <div id="map"></div>
 
