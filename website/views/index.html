@@ -132,7 +132,7 @@
           VRE to Downtown Washington (Farragut North station), for only $7 each
           way.
         </h4>
-        <p class="text-center">Arrives in DC at 8:30 AM, leaves at 5:30 PM</p>
+        <p class="text-center">*Route will start on June 19. Arrives in DC at 8:30 AM, leaves at 5:30 PM</p>
 
         <br>
         <br>
@@ -152,19 +152,6 @@
             <h3 class="text-center">$14/Day</h3>
             <p></p>
             <p class="text-center">$70 total</p>
-
-            <form action="/order" method="POST">
-              <script
-                src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                data-key="pk_test_AQ2Qf9lnT83wqSTYUuUqZARt"
-                data-amount="7000"
-                data-name="Juldi Pass"
-                data-label="Purchase Pass"
-                data-description="Juldi Weekly Pass"
-                data-image="img/juldi_logo.png"
-                data-locale="auto">
-              </script>
-            </form>
           </div>
           <div class="card card-disabled hidden-xs-down">
             <h4 class="text-center">Monthly Pass</h4>
@@ -182,7 +169,7 @@
         <h2 class="display-5 text-center">Don't see a route for you?</h2>
         <h4 class="text-center">Let us know what areas we should start serving.</h4>
         <br>
-        <form id="reg_form" action="/route" method="POST">
+        <form id="reg_form" action="/commuteinfo" method="POST">
           <fieldset class="form-group">
             <label for="start">Start location</label>
             <input type="text" class="form-control" id="start" name="start" placeholder="What's your start address?" required>

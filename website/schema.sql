@@ -16,3 +16,14 @@ CREATE TABLE morningCommute (
   timemins VARCHAR(2) NOT NULL,
   timeampm VARCHAR(2) NOT NULL
 );
+
+CREATE TABLE commuteInfo (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  email VARCHAR (50) NOT NULL,
+  start VARCHAR(200) NOT NULL,
+  end VARCHAR(200) NOT NULL,
+  arrivalTime VARCHAR(10) NOT NULL,
+  departureTime VARCHAR(10) NOT NULL,
+  startCoords JSON,
+  endCoords JSON
+);
