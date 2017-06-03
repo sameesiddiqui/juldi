@@ -13,10 +13,48 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="/css/payment.css">
 
 </head>
 <body>
-
+  <script src="https://js.stripe.com/v3/"></script>
+  <div class="modal fade" id="week-pass" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <form action="/order" method="POST">
+            <div class="group">
+              <label>
+                <span>Name</span>
+                <input name="cardholder-name" class="field" placeholder="Your name" required>
+              </label>
+              <label>
+                <span>Email</span>
+                <input class="field" placeholder="you@example.com" type="email" required>
+              </label>
+              <label>
+                <span>ZIP Code</span>
+                <input class="field" name="address-zip" required>
+              </label>
+            </div>
+            <div class="group">
+              <label>
+                <span>Card</span>
+                <div id="card-element" class="field"></div>
+              </label>
+            </div>
+            <button class="checkout-btn" type="submit">Pay $70</button>
+            <div class="outcome">
+              <div class="error" role="alert"></div>
+              <div class="success">
+                Success! Your Stripe token is <span class="token"></span>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="container col-12">
     <nav class="navbar">
       <div class="mx-auto" href="/">
@@ -152,6 +190,9 @@
             <h3 class="text-center">$14/Day</h3>
             <p></p>
             <p class="text-center">$70 total</p>
+            <button type="button" class="btn btn-sm" data-toggle="modal" data-target="#week-pass">
+              Get your pass!
+            </button>
           </div>
           <div class="card card-disabled hidden-xs-down">
             <h4 class="text-center">Monthly Pass</h4>
@@ -244,19 +285,9 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
   <script src="js/main.js"></script>
   <script src="js/routes.js"></script>
+  <script src="js/payment.js"></script>
   <script async defer
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZ73C8zs1E16Hq8qzX7zpDpaYBU1XcYtQ&callback=initMap&libraries=places">
-  </script>
-
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-93997211-1', 'auto');
-    ga('send', 'pageview');
-
   </script>
 </body>
 </html>
