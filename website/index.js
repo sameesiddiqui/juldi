@@ -183,7 +183,7 @@ function connectDB (db, table, obj) {
     var pool = mysql.createPool({
       connectionLimit: 20,
       host     : secret.dbinfo.host,
-      //socketPath: secret.dbinfo.socketPath,
+      socketPath: secret.dbinfo.socketPath,
       user     : secret.dbinfo.user,
       password : secret.dbinfo.password,
       database : db
