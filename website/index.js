@@ -75,7 +75,7 @@ app.post('/order', function (req, res) {
     "all your route information a few days before the 19th. We're looking forward to " +
     "serving you!\n\n" + "-The Juldi Team"
 
-    var htmltext = "<h2>Thanks for deciding to ride with Juldi!</h2?" +
+    var htmltext = "<h2>Thanks for deciding to ride with Juldi! </h2>" +
     "<p>This email is confirming the purchase of a pass from us:</p>" +
     "<p>" + order.description + "</p>" + "<br>" +
     "<p>We're excited to have you ride with us when the route launches on June 19. " +
@@ -151,7 +151,7 @@ app.post('/commuteinfo', function (req, res) {
         "launching a route closer to you.\n" +
         "\n-The Juldi Team"
 
-  var htmlText = '<h2>Thanks for showing interest in riding with Juldi!</h2>' +
+  var htmlText = '<h2>Thanks for showing interest in riding with Juldi! </h2>' +
         "<p>We're currently piloting our service and looking to serve a wider area. " +
         "As we continue to improve and expand, we'll update you as we move towards " +
         "launching a route closer to you.</p>" +
