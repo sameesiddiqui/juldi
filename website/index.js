@@ -1,13 +1,15 @@
 var express = require('express')
 var app = express()
-app.use(express.static('public'))
 var mysql = require('mysql')
-var stripe = require("stripe")("sk_test_ZnsVI5btDVpXdqsavajIxPdw")
-//var secret = require('./secret')
-
+var secret = require('./secret')
+var stripe = require("stripe")(secret.stripekeys.sk_test)
+var googleMapsClient = require('@google/maps').createClient({
+  key: secret.googlekeys.maps
+});
 
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
+app.use(express.static('public'))
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
@@ -25,11 +27,8 @@ app.get('/faq', function (req, res) {
 })
 
 app.post('/order', function(req, res){
-// Set your secret key: remember to change this to your live secret key in production
-// See your keys here: https://dashboard.stripe.com/account/apikeys
-
   // Get the payment token submitted by the form:
-  var token = req.body.stripeToken // Using Express
+  var token = req.body.stripeToken
 
   // Charge the user's card:
   var charge = stripe.charges.create({
@@ -79,24 +78,44 @@ app.post('/order', function(req, res){
 })
 
 app.post('/route', function(req, res){
+
+  googleMapsClient.geocode({
+    address: req.body.start
+  }, function(err, response) {
+    // if (!err) {
+      console.log("Geocoded result: " + response.json.results);
+    //}
+  });
+
+  googleMapsClient.geocode({
+    address: req.body.end
+  }, function(err, response) {
+    if (!err) {
+      console.log(response.json.results);
+    }
+  });
+
   var route = {
     email : req.body.email,
     start : req.body.start,
     dest : req.body.end,
-    timehrs : req.body.hrs,
-    timemins : req.body.mins,
-    timeampm : req.body.ampm
+    arrivalTime : req.body.arrivalTime,
+    departureTime : req.body.departureTime,
   }
   console.log(route)
   // store route data
   connectDB('routes', 'morningCommute', route)
 
-  var plaintext = "Thanks for registering your commute with us!\n" +
-        "We're currently working on setting up your route. We'll shoot you an email as soon as it's available.\n" +// plain text body
+  var plaintext = "Thanks for showing interest in riding with Juldi!\n" +
+        "We're currently piloting our service and looking to expand to serve a wider area." +
+        "As we continue to improve and expand, we'll update you as we move towards" +
+        "launching a route closer to you.\n" +
         "\n-The Juldi Team";
 
-  var htmlText = '<h2>Thanks for registering your commute with us!</h2>' + // html body
-        "<p>We're currently working on setting up your route. We'll shoot you an email as soon as it's available.</p>" +
+  var htmlText = '<h2>Thanks for showing interest in riding with Juldi!</h2>' +
+        "<p>We're currently piloting our service and looking to expand to serve a wider area." +
+        "As we continue to improve and expand, we'll update you as we move towards" +
+        "launching a route closer to you.</p>" +
         "<br><br><p>-The Juldi Team</p>";
   //send confirmation email
   // setup email data with unicode symbols
@@ -126,7 +145,7 @@ function connectDB(db, table, obj) {
       password : secret.dbinfo.password,
       database : db
     })
-    console.log(pool)
+    //console.log(pool)
 
   pool.getConnection(function(error, connection){
     if (error) {

@@ -137,7 +137,7 @@
           <p></p>
           <h4 class="card-title text-center">Step 1</h4>
           <p class="card-text">
-            Purchase a pass below.
+            Purchase a week pass below.
           </p>
         </div>
 
@@ -146,7 +146,7 @@
           <p></p>
           <h4 class="card-title text-center">Step 2</h4>
           <p class="card-text">
-            We'll send you your route information.
+            We'll send you your route information and pass a few days before your ride.
           </p>
         </div>
 
@@ -210,19 +210,19 @@
         <h2 class="display-5 text-center">Don't see a route for you?</h2>
         <h4 class="text-center">Let us know what areas we should start serving.</h4>
         <br>
-        <form action="/route" method="POST">
+        <form id="reg_form" action="/route" method="POST">
           <fieldset class="form-group">
             <label for="start">Start location</label>
-            <input type="text" class="form-control" id="start-loc" placeholder="What's your start address?" required>
+            <input type="text" class="form-control" id="start" name="start" placeholder="What's your start address?" required>
           </fieldset>
           <fieldset class="form-group">
             <label for="end">End location</label>
-            <input type="text" class="form-control" id="end-loc" placeholder="What's your end address?" required>
+            <input type="text" class="form-control" id="end" name="end" placeholder="What's your end address?" required>
           </fieldset>
           <fieldset class="form-group row">
             <div class="col-sm-6">
               <label for="arrival">When do you need to be at work?</label>
-              <select class="form-control" id="arrival-time" required>
+              <select class="form-control" name="arrivalTime" required>
                 <option>7:00 AM</option>
                 <option>7:15 AM</option>
                 <option>7:30 AM</option>
@@ -244,7 +244,7 @@
             </div>
             <div class="col-sm-6">
               <label for="leave">When do you leave work?</label>
-              <select class="form-control" id="leave-time" required>
+              <select class="form-control" name="departureTime" required>
                 <option>4:00 PM</option>
                 <option>4:15 PM</option>
                 <option>4:30 PM</option>
@@ -260,20 +260,25 @@
           </fieldset>
           <fieldset class="form-group">
             <label for="email" required>Email</label>
-            <input class="form-control" type="email" id="email" placeholder="Where can we reach you?">
+            <input class="form-control" type="email" name="email" placeholder="Where can we reach you?">
           </fieldset>
           <br>
+          <fieldset class="text-center">
           <button type="submit" class="btn">Submit</button>
+        </fieldset>
         </form>
       </section>
 
+      <br>
       <br>
       <br>
 
       <div id="bottom">
         <p>Have burning questions? Check out our <a href="/faq">FAQ page.</a>
           <br>
-          Still wondering about something? Email hello@juldi.org for answers. </p>
+          Need to contact us? Email hello@juldi.org with any and all concerns. </p>
+
+          <h6>Copyright &copy; 2017 Juldi Transportation, All Rights Reserved.<h6>
       </div>
     </div>
 
