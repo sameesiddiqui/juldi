@@ -1,12 +1,3 @@
-CREATE TABLE routes (
-  id INT PRIMARY KEY AUTO_INCREMENT,
-  email VARCHAR (50) NOT NULL,
-  start VARCHAR(200) NOT NULL,
-  starttime VARCHAR(50) NOT NULL,
-  dest VARCHAR(200) NOT NULL,
-  desttime VARCHAR(50) NOT NULL
-);
-
 CREATE TABLE morningCommute (
   id INT PRIMARY KEY AUTO_INCREMENT,
   email VARCHAR (50) NOT NULL,
@@ -22,7 +13,8 @@ CREATE TABLE orders (
   name VARCHAR (25) NOT NULL,
   email VARCHAR (50) NOT NULL,
   zip VARCHAR (6) NOT NULL,
-  description VARCHAR(50) NOT NULL
+  description VARCHAR(50) NOT NULL,
+  date TIMESTAMP
 );
 
 CREATE TABLE commuteInfo (
@@ -33,5 +25,6 @@ CREATE TABLE commuteInfo (
   arrivalTime VARCHAR(10) NOT NULL,
   departureTime VARCHAR(10) NOT NULL,
   startCoords JSON,
-  endCoords JSON
+  endCoords JSON,
+  date TIMESTAMP
 );
