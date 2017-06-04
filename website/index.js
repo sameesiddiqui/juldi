@@ -1,7 +1,7 @@
 var express = require('express')
 var app = express()
 var mysql = require('mysql')
-var secret = require('./secret')
+var secret = require('./example_secret')
 var stripe = require('stripe')(secret.stripekeys.sk_test)
 var googleMapsClient = require('@google/maps').createClient({
   key: secret.googlekeys.maps
