@@ -1,7 +1,6 @@
 // This is a sample secret.js file
 // this contains credentials / other sensitive information
 
-
 exports.dbinfo = {
   host: 'localhost',
   user: 'root',
@@ -13,7 +12,6 @@ exports.emailinfo = {
   pass: 'securepassword'
 }
 
-
 exports.stripekeys = {
   pk_test: '',
   sk_test: '',
@@ -22,6 +20,6 @@ exports.stripekeys = {
 }
 
 exports.googlekeys = {
-  maps: ''
+  maps: '',
+  test_key: ''
 }
-
