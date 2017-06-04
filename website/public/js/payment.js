@@ -1,24 +1,36 @@
 var stripe = Stripe('pk_test_AQ2Qf9lnT83wqSTYUuUqZARt')
 var elements = stripe.elements()
 
-var card = elements.create('card', {
-  hidePostalCode: true,
-  style: {
-    base: {
-      iconColor: '#666EE8',
-      color: '#31325F',
-      lineHeight: '40px',
-      fontWeight: 300,
-      fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-      fontSize: '15px',
+var inputStyle = {
+  base: {
+    iconColor: '#666EE8',
+    color: '#31325F',
+    lineHeight: '40px',
+    fontWeight: 300,
+    fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+    fontSize: '15px',
 
-      '::placeholder': {
-        color: '#CFD7E0',
-      },
+    '::placeholder': {
+      color: '#CFD7E0',
     },
-  }
+  },
+}
+
+var cardNum = elements.create('cardNumber', {
+  style: inputStyle,
 });
-card.mount('#card-element');
+
+var cardExp = elements.create('cardExpiry', {
+  style: inputStyle,
+});
+
+var cardCvc = elements.create('cardCvc', {
+  style: inputStyle,
+});
+
+cardNum.mount('#cardnum-element');
+cardExp.mount('#cardexp-element');
+cardCvc.mount('#cardcvc-element');
 
 function setOutcome(result) {
   var successElement = document.querySelector('.success');
