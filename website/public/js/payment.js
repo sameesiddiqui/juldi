@@ -1,24 +1,36 @@
-var stripe = Stripe('pk_test_AQ2Qf9lnT83wqSTYUuUqZARt')
+var stripe = Stripe('pk_live_h00iueeTj0hhxHFEPpcmmLZL')
 var elements = stripe.elements()
 
-var card = elements.create('card', {
-  hidePostalCode: true,
-  style: {
-    base: {
-      iconColor: '#666EE8',
-      color: '#31325F',
-      lineHeight: '40px',
-      fontWeight: 300,
-      fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-      fontSize: '15px',
+var inputStyle = {
+  base: {
+    iconColor: '#666EE8',
+    color: '#31325F',
+    lineHeight: '40px',
+    fontWeight: 300,
+    fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+    fontSize: '15px',
 
-      '::placeholder': {
-        color: '#CFD7E0',
-      },
+    '::placeholder': {
+      color: '#CFD7E0',
     },
-  }
+  },
+}
+
+var cardNum = elements.create('cardNumber', {
+  style: inputStyle,
 });
-card.mount('#card-element');
+
+var cardExp = elements.create('cardExpiry', {
+  style: inputStyle,
+});
+
+var cardCvc = elements.create('cardCvc', {
+  style: inputStyle,
+});
+
+cardNum.mount('#cardnum-element');
+cardExp.mount('#cardexp-element');
+cardCvc.mount('#cardcvc-element');
 
 function setOutcome(result) {
   var successElement = document.querySelector('.success');
@@ -47,17 +59,25 @@ function setOutcome(result) {
   }
 }
 
-card.on('change', function(event) {
+cardNum.on('change', function (event) {
   setOutcome(event);
 });
+// cardExp.on('change', function (event) {
+//   setOutcome(event);
+// });
+// cardCvc.on('change', function (event) {
+//   setOutcome(event);
+// });
 
 document.querySelector('form').addEventListener('submit', function(e) {
   e.preventDefault();
   var form = document.querySelector('form');
+
   var extraDetails = {
     name: form.querySelector('input[name=cardholder_name]').value,
     address_zip: form.querySelector('input[name=address_zip]').value,
-    email: form.querySelector('input[name=cardholder_email]').value
+    email: form.querySelector('input[name=cardholder_email]').value,
+    phone: form.querySelector('input[name=phone_num]').value
   }
-  stripe.createToken(card, extraDetails).then(setOutcome);
-});
+  stripe.createToken(cardNum, extraDetails).then(setOutcome)
+})

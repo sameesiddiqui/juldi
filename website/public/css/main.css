@@ -36,6 +36,7 @@ header h2{
 .hero {
   height: 400px;
   background-image: url("https://storage.googleapis.com/images_for_juldi/hero.jpg");
+  /*background-image: url("../img/hero.jpg");*/
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
