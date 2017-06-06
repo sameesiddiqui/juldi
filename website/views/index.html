@@ -26,17 +26,14 @@
           <form id="payment-form" action="/order" method="POST">
             <div class="group">
               <label>
-                <span>Full Name</span>
-                <input name="cardholder_name" class="field" placeholder="Your name" required>
+                <span>Name</span>
+                <input name="cardholder_name" class="field" placeholder="Steve Jobs" required>
               </label>
               <label>
                 <span>Email</span>
                 <input name="cardholder_email" class="field" placeholder="you@example.com" type="email" required>
               </label>
-              <label>
-                <span>ZIP Code</span>
-                <input class="field" name="address_zip" required>
-              </label>
+
             </div>
             <div class="group">
               <label>
@@ -52,7 +49,18 @@
                 <div id="cardcvc-element" class="field"></div>
               </label>
             </div>
-            <button class="checkout-btn" type="submit">Pay $70</button>
+
+            <div class="group">
+              <label>
+                <span>Phone (Opt.)</span>
+                <input class="field" name="phone_num" placeholder="703-123-4567">
+              </label>
+              <label>
+                <span>Zip (Opt.)</span>
+                <input class="field" name="address_zip" placeholder="22222">
+              </label>
+            </div>
+            <button class="checkout-btn" type="submit">Pay $60</button>
             <div class="outcome">
               <div class="error" role="alert"></div>
               <div class="success">Success!<span class="token"></span>
@@ -178,33 +186,40 @@
         <br>
         <h4 style="font-weight: normal;">
           Try out our first route with a one week pass. A non-<wbr>stop ride from Burke
-          VRE to Downtown Washington (Farragut North station), for only $7 each
+          VRE to Downtown Washington (Farragut North station), for only $6 each
           way.
         </h4>
-        <p class="text-center">*Route will start on June 19. Arrives in DC at 8:30 AM, leaves at 5:30 PM</p>
+        <p class="text-center">*Route will start on June 19 and run M-F.</p>
+        <p class="text-center"> Arrives in DC at 8:30 AM, leaves at 5:30 PM</p>
 
         <div id="map"></div>
 
         <div class="card-deck">
           <div class="card card-disabled hidden-xs-down">
-            <h4 class="text-center">Daily Pass</h4>
-            <p>
+            <h4 class="text-center">Day Pass</h4>
+            <p></p>
+            <h3 class="text-center">$15/Day</h3>
+            <p></p>
+            <p class="text-center">
               Coming soon!
             </p>
           </div>
           <div class="card">
-            <h4 class="text-center">Weekly Pass</h4>
+            <h4 class="text-center">Week Pass</h4>
             <p></p>
-            <h3 class="text-center">$14/Day</h3>
+            <h3 class="text-center">$12/Day</h3>
             <p></p>
-            <p class="text-center">$70 total</p>
+            <p class="text-center">$60 total</p>
             <button type="button" class="btn btn-sm" data-toggle="modal" data-target="#week-pass">
               Get your pass!
             </button>
           </div>
           <div class="card card-disabled hidden-xs-down">
-            <h4 class="text-center">Monthly Pass</h4>
-            <p>
+            <h4 class="text-center">Month Pass</h4>
+            <p></p>
+            <h3 class="text-center">$10/Day</h3>
+            <p></p>
+            <p class="text-center">
               Coming soon!
             </p>
           </div>
@@ -286,21 +301,30 @@
           <br>
           Need to contact us? Email hello@juldi.org with any and all concerns. </p>
 
-          <h6>Copyright &copy; 2017 Juldi Transportation, All Rights Reserved.<h6>
+          <h6>Copyright &copy; 2017 Juldi LLC, All Rights Reserved.<h6>
       </div>
     </div>
 
   </div>
 
   <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-  <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
   <script src="js/main.js"></script>
   <script src="js/routes.js"></script>
   <script src="js/payment.js"></script>
-  <script async defer
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-100479528-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  <!-- <script async defer
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZ73C8zs1E16Hq8qzX7zpDpaYBU1XcYtQ&callback=initMap&libraries=places">
-  </script>
+  </script> -->
 </body>
 </html>

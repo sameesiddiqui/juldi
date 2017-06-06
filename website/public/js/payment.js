@@ -1,4 +1,4 @@
-var stripe = Stripe('pk_test_AQ2Qf9lnT83wqSTYUuUqZARt')
+var stripe = Stripe('pk_live_h00iueeTj0hhxHFEPpcmmLZL')
 var elements = stripe.elements()
 
 var inputStyle = {
@@ -59,17 +59,25 @@ function setOutcome(result) {
   }
 }
 
-card.on('change', function(event) {
+cardNum.on('change', function (event) {
   setOutcome(event);
 });
+// cardExp.on('change', function (event) {
+//   setOutcome(event);
+// });
+// cardCvc.on('change', function (event) {
+//   setOutcome(event);
+// });
 
 document.querySelector('form').addEventListener('submit', function(e) {
   e.preventDefault();
   var form = document.querySelector('form');
+
   var extraDetails = {
     name: form.querySelector('input[name=cardholder_name]').value,
     address_zip: form.querySelector('input[name=address_zip]').value,
-    email: form.querySelector('input[name=cardholder_email]').value
+    email: form.querySelector('input[name=cardholder_email]').value,
+    phone: form.querySelector('input[name=phone_num]').value
   }
-  stripe.createToken(card, extraDetails).then(setOutcome);
-});
+  stripe.createToken(cardNum, extraDetails).then(setOutcome)
+})

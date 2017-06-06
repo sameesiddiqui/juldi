@@ -1,8 +1,8 @@
 var express = require('express')
 var app = express()
 var mysql = require('mysql')
-var secret = require('./example_secret')
-var stripe = require('stripe')(secret.stripekeys.sk_test)
+var secret = require('./secret')
+var stripe = require('stripe')(secret.stripekeys.secret_key)
 var googleMapsClient = require('@google/maps').createClient({
   key: secret.googlekeys.maps
 })
@@ -36,9 +36,10 @@ app.post('/order', function (req, res) {
   var token = req.body.stripeToken
 
   var charge = stripe.charges.create({
-    amount: 7000,
+    amount: 6000,
     currency: 'usd',
     description: 'Juldi Week Pass',
+    receipt_email: req.body.cardholder_email,
     source: token
   }, function (err, charge) {
     if (err) {
@@ -48,16 +49,14 @@ app.post('/order', function (req, res) {
           err: 'Your card was declined.'
         })
       } else {
-        var errors = values(err.errors).map((err) => err.message)
-        return res.send({
-          err: errors.join('. ')
-        })
+        console.log(err)
       }
     }
     // order object to store
     var order = {
       name: req.body.cardholder_name,
       email: req.body.cardholder_email,
+      phone: req.body.phone_num,
       zip: req.body.address_zip,
       description: charge.description
     }
@@ -76,11 +75,11 @@ app.post('/order', function (req, res) {
     "serving you!\n\n" + "-The Juldi Team"
 
     var htmltext = "<h2>Thanks for deciding to ride with Juldi! </h2>" +
-    "<p>This email is confirming the purchase of a pass from us:</p>" +
+    "<p>This email is confirming the purchase of a pass from us: </p>" +
     "<p>" + order.description + "</p>" + "<br>" +
-    "<p>We're excited to have you ride with us when the route launches on June 19. " +
+    "<p>We're excited to have you ride with us when the route launches on Monday, June 19. " +
     "Until then, we'll keep you updated on any news you need to know and send you " +
-    "all your route information a few days before the 19th.</p> <br> <p>We're looking forward to" +
+    "all your route information a few days before the 19th.</p> <br> <p>We're looking forward to " +
     "serving you!</p> <br>" + "<p>-The Juldi Team</p>"
     //send confirmation email
     // setup email data with unicode symbols
@@ -171,6 +170,7 @@ app.post('/commuteinfo', function (req, res) {
   })
   .catch((failure) => {
     console.log(failure)
+    res.render('commuteinfo.html')
   })
 })
 

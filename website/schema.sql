@@ -12,7 +12,8 @@ CREATE TABLE orders (
   id INT PRIMARY KEY AUTO_INCREMENT,
   name VARCHAR (25) NOT NULL,
   email VARCHAR (50) NOT NULL,
-  zip VARCHAR (6) NOT NULL,
+  zip VARCHAR (6)NULL,
+  phone varchar(17)NULL,
   description VARCHAR(50) NOT NULL,
   date TIMESTAMP
 );
