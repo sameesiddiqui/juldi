@@ -40,9 +40,9 @@ label > span {
   float: right;
 }
 
-.field::-webkit-input-placeholder { color: #CFD7E0; }
-.field::-moz-placeholder { color: #CFD7E0; }
-.field:-ms-input-placeholder { color: #CFD7E0; }
+.field::-webkit-input-placeholder { color: #BBB; }
+.field::-moz-placeholder { color: #BBB; }
+.field:-ms-input-placeholder { color: #BBB; }
 
 .checkout-btn {
   float: left;

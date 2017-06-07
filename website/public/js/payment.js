@@ -11,7 +11,7 @@ var inputStyle = {
     fontSize: '15px',
 
     '::placeholder': {
-      color: '#CFD7E0',
+      color: '#BBB',
     },
   },
 }

@@ -8,7 +8,7 @@ function initMap() {
   var directionsService = new google.maps.DirectionsService;
   var directionsDisplay = new google.maps.DirectionsRenderer;
   var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 7,
+    zoom: 10,
     center: {lat: 38.83, lng: -77.16}
   });
   directionsDisplay.setMap(map);
@@ -19,7 +19,7 @@ function initMap() {
 
 function calculateAndDisplayRoute(directionsService, directionsDisplay) {
   directionsService.route({
-    origin: "Burke Centre Amtrak Station",
+    origin: "Herndon-Monroe Park and Ride",
     destination: "Farragut North Station",
     travelMode: 'DRIVING'
   }, function(response, status) {
