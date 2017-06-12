@@ -2,7 +2,7 @@ var express = require('express')
 var app = express()
 app.use(express.static('public'))
 var mysql = require('mysql')
-var secret = require('./secret')
+//var secret = require('./secret')
 var fs = require('fs')
 
 const bodyParser = require('body-parser');
