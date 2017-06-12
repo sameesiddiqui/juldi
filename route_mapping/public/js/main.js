@@ -21,7 +21,7 @@ function initMap() {
 
   // Add a marker clusterer to manage the markers.
   var markerCluster = new MarkerClusterer(map, markers,
-      {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+      {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'})
 }
 var starting = [
   {lat: 38.7956, lng: -77.6138},

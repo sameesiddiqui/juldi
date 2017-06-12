@@ -1,4 +1,5 @@
 node_modules/
 accounts/config.js
 website/secret.js
+route_mapping/secret.js
 .DS_Store
