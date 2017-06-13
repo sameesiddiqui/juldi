@@ -75,7 +75,7 @@ app.post('/order', function (req, res) {
     order.description + "\n" +
     "We're excited to have you ride with us when the route launches on June 19. " +
     "Until then, we'll keep you updated on any news you need to know and send you " +
-    "all your route information a few days before the 19th. We're looking forward to " +
+    "all your route information promptly. We're looking forward to " +
     "serving you!\n\n" + "-The Juldi Team"
 
     var htmltext = "<h2>Thanks for deciding to ride with Juldi! </h2>" +
@@ -83,7 +83,7 @@ app.post('/order', function (req, res) {
     "<p>" + order.description + "</p>" + "<br>" +
     "<p>We're excited to have you ride with us when the route launches on Monday, June 19. " +
     "Until then, we'll keep you updated on any news you need to know and send you " +
-    "all your route information a few days before the 19th.</p> <br> <p>We're looking forward to " +
+    "all your route information promtly.</p> <br> <p>We're looking forward to " +
     "serving you!</p> <br>" + "<p>-The Juldi Team</p>"
     //send confirmation email
     // setup email data with unicode symbols
@@ -150,15 +150,15 @@ app.post('/commuteinfo', function (req, res) {
 
   var plaintext = "Thanks for showing interest in riding with Juldi!\n" +
         "We're currently piloting our service and looking to serve a wider area. " +
-        "As we continue to improve and expand, we'll update you as we move towards " +
-        "launching your route. If you know anyone with a similar commute, let them know " +
+        "In the next few days, we'll update you when we can launch your route. " +
+        "\nIf you know anyone with a similar commute, let them know " +
         "about Juldi so we can build your route sooner.\n" +
         "\n-The Juldi Team"
 
   var htmlText = '<h2>Thanks for showing interest in riding with Juldi! </h2>' +
         "<p>We're currently piloting our service and looking to serve a wider area. " +
-        "As we continue to improve and expand, we'll update you as we move towards " +
-        "launching your route. If you know anyone with a similar commute, let them know " +
+        "In the next few days, we'll update you when we can launch your route. </p>" +
+        "<p>If you know anyone with a similar commute, let them know " +
         "about Juldi so we can build your route sooner.</p>" +
         "<br><br><p>-The Juldi Team</p>"
   //send confirmation email
