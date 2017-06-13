@@ -26,6 +26,10 @@ app.get('/faq', function (req, res) {
   res.render('faq.html')
 })
 
+app.get('/routes', function (req, res) {
+  res.render('routes.html')
+})
+
 app.get('/commuteinfo', function (req, res) {
   res.render('commuteinfo.html')
 })
@@ -147,13 +151,15 @@ app.post('/commuteinfo', function (req, res) {
   var plaintext = "Thanks for showing interest in riding with Juldi!\n" +
         "We're currently piloting our service and looking to serve a wider area. " +
         "As we continue to improve and expand, we'll update you as we move towards " +
-        "launching a route closer to you.\n" +
+        "launching your route. If you know anyone with a similar commute, let them know " +
+        "about Juldi so we can build your route sooner.\n" +
         "\n-The Juldi Team"
 
   var htmlText = '<h2>Thanks for showing interest in riding with Juldi! </h2>' +
         "<p>We're currently piloting our service and looking to serve a wider area. " +
         "As we continue to improve and expand, we'll update you as we move towards " +
-        "launching a route closer to you.</p>" +
+        "launching your route. If you know anyone with a similar commute, let them know " +
+        "about Juldi so we can build your route sooner.</p>" +
         "<br><br><p>-The Juldi Team</p>"
   //send confirmation email
   // setup email data with unicode symbols
