@@ -40,7 +40,7 @@ app.post('/order/:passType', function (req, res) {
   var token = req.body.stripeToken
   var passPrice
   var passDescrip
-console.log(req.params.passType)
+
   switch (req.params.passType) {
     case 'day':
       passPrice = 1400
