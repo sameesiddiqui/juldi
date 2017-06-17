@@ -17,61 +17,6 @@
 
 </head>
 <body>
-  <script src="https://js.stripe.com/v3/"></script>
-
-  <div class="modal fade" id="week-pass" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-body">
-          <form id="payment-form" action="/order" method="POST">
-            <div class="group">
-              <label>
-                <span>Name</span>
-                <input name="cardholder_name" class="field" placeholder="Steve Jobs" required>
-              </label>
-              <label>
-                <span>Email</span>
-                <input name="cardholder_email" class="field" placeholder="you@example.com" type="email" required>
-              </label>
-
-            </div>
-            <div class="group">
-              <label>
-                <span>Card</span>
-                <div id="cardnum-element" class="field"></div>
-              </label>
-              <label>
-                <span>Exp.</span>
-                <div id="cardexp-element" class="field"></div>
-              </label>
-              <label>
-                <span>CVC</span>
-                <div id="cardcvc-element" class="field"></div>
-              </label>
-            </div>
-
-            <div class="group">
-              <label>
-                <span>Phone*</span>
-                <input class="field" name="phone_num" placeholder="703-123-4567">
-              </label>
-              <label>
-                <span>Zip*</span>
-                <input class="field" name="address_zip" placeholder="22222">
-              </label>
-            </div>
-            <small>* Optional</small>
-            <button class="checkout-btn" type="submit">Pay $60</button>
-            <div class="outcome">
-              <div class="error" role="alert"></div>
-              <div class="success">Success!<span class="token"></span>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <div class="container col-12">
     <nav class="navbar">
@@ -103,9 +48,9 @@
       <section class="col-xl-10 col-sm-12 col-11 mx-auto">
         <h2 class="display-5 text-center">What is Juldi?</h2>
         <h4 style="font-weight: normal;">
-          Juldi is a simpler way to get to work. We get you there quickly and
-          affordably by creating a shuttle route optimized for you. Whether you want
-          to save time or just kick back and relax, we'll find the perfect route for you.
+          Juldi is a simpler way to get to work. Just tell us where you need to go,
+          and we'll create a shuttle route optimized for you. Whether you want
+          to save time or just kick back and relax, Juldi is the solution to your daily commute.
         </h4>
       </section>
 
@@ -185,62 +130,13 @@
       <br>
       <br>
 
-      <!-- <section id="pilot" class="col-xl-10 col-sm-12 col-11 mx-auto">
-
-        <h2 class="display-5 text-center">Solve your commute for good</h2>
-        <br>
-        <h4 style="font-weight: normal;">
-          Try out our first route with a one week pass. A non-<wbr>stop ride from Herndon-Monroe
-           to Downtown Washington (Farragut North station), for only $6 each
-          way.
-        </h4>
-        <p class="text-center">*Route will start on June 19 and run M-F.</p>
-        <p class="text-center"> Arrives in DC at 8:30 AM, leaves at 5:30 PM</p>
-
-        <div id="map"></div>
-
-        <div class="card-deck">
-          <div class="card card-disabled hidden-xs-down">
-            <h4 class="text-center">Day Pass</h4>
-            <p></p>
-            <h3 class="text-center">$15/Day</h3>
-            <p></p>
-            <p class="text-center">
-              Coming soon!
-            </p>
-          </div>
-          <div class="card">
-            <h4 class="text-center">Week Pass</h4>
-            <p></p>
-            <h3 class="text-center">$12/Day</h3>
-            <p></p>
-            <p class="text-center">$60 total</p>
-            <button type="button" class="btn btn-sm" data-toggle="modal" data-target="#week-pass">
-              Get your pass!
-            </button>
-          </div>
-          <div class="card card-disabled hidden-xs-down">
-            <h4 class="text-center">Month Pass</h4>
-            <p></p>
-            <h3 class="text-center">$10/Day</h3>
-            <p></p>
-            <p class="text-center">
-              Coming soon!
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <br>
-      <br> -->
-
       <section id="pilot" class="col-xl-10 col-sm-12 col-11 mx-auto">
         <h2 class="display-5 text-center">Solve your commute for good.</h2>
         <br>
         <h4 class="text-left" style="font-weight: normal;">
           Enter your commute information and get a custom route made for you.
           We'll email you as soon as we start your route.
-          You can even have your first ride free.</h4>
+          You can even take your first ride <b>free</b>.</h4>
         <br>
         <form id="reg_form" action="/commuteinfo" method="POST">
           <fieldset class="form-group">

@@ -19,7 +19,7 @@
 <body>
   <script src="https://js.stripe.com/v3/"></script>
 
-  <div class="modal fade" id="week-pass" tabindex="-1" role="dialog">
+  <div id="purchase-pass" class="modal fade" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-body">
@@ -32,6 +32,11 @@
               <label>
                 <span>Email</span>
                 <input name="cardholder_email" class="field" placeholder="you@example.com" type="email" required>
+              </label>
+              <label id="first-group">
+                <span>Timing</span>
+                <input name="timebtn" class="selectTime" type="radio" value="AM">AM</input>
+                <input name="timebtn" class="selectTime" type="radio" value="PM">PM</input>
               </label>
 
             </div>
@@ -61,7 +66,61 @@
               </label>
             </div>
             <small>* Optional</small>
-            <button class="checkout-btn" type="submit">Pay $60</button>
+            <button id="pass-price" class="checkout-btn" type="submit">Purchase</button>
+            <div class="outcome">
+              <div class="error" role="alert"></div>
+              <div class="success">Success!<span class="token"></span>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <form id="day-payment-form" action="/order" method="POST">
+            <div class="group">
+              <label>
+                <span>Name</span>
+                <input name="cardholder_name" class="field" placeholder="Steve Jobs" required>
+              </label>
+              <label>
+                <span>Email</span>
+                <input name="cardholder_email" class="field" placeholder="you@example.com" type="email" required>
+              </label>
+
+            </div>
+            <div class="group">
+              <label>
+                <span>Card</span>
+                <div id="day-cardnum-element" class="field"></div>
+              </label>
+              <label>
+                <span>Exp.</span>
+                <div id="day-cardexp-element" class="field"></div>
+              </label>
+              <label>
+                <span>CVC</span>
+                <div id="day-cardcvc-element" class="field"></div>
+              </label>
+            </div>
+
+            <div class="group">
+              <label>
+                <span>Phone*</span>
+                <input class="field" name="phone_num" placeholder="703-123-4567">
+              </label>
+              <label>
+                <span>Zip*</span>
+                <input class="field" name="address_zip" placeholder="22222">
+              </label>
+            </div>
+            <small>* Optional</small>
+            <button class="checkout-btn" type="submit">Pay $14</button>
             <div class="outcome">
               <div class="error" role="alert"></div>
               <div class="success">Success!<span class="token"></span>
@@ -98,9 +157,11 @@
         <p class="text-center"> Arrives in DC at 8:30 AM, leaves at 5:30 PM</p>
 
         <div id="map"></div>
+        <br>
+        <h4 class="text-center">Roundtrip Passes</h4>
 
         <div class="card-deck">
-          <div class="card card-disabled hidden-xs-down">
+          <div class="card roundtrip-card">
             <h4 class="text-center">Day Pass</h4>
             <p></p>
             <h3 class="text-center">$14/Day</h3>
@@ -108,21 +169,61 @@
             <p class="text-center">
               No commitment!
             </p>
+            <button type="button" id="day-pass" class="btn btn-sm" data-toggle="modal" data-target="#purchase-pass" onclick="passPrice('day')">
+              Buy Day Pass
+            </button>
           </div>
-          <div class="card">
+          <div class="card roundtrip-card">
             <h4 class="text-center">Week Pass</h4>
             <p></p>
             <h3 class="text-center">$12/Day</h3>
             <p></p>
             <p class="text-center">$60 total</p>
-            <button type="button" class="btn btn-sm" data-toggle="modal" data-target="#week-pass">
-              Get your pass!
+            <button type="button" id="week-pass" class="btn btn-sm" data-toggle="modal" data-target="#purchase-pass" onclick="passPrice('week')">
+              Buy Week Pass
             </button>
           </div>
-          <div class="card card-disabled hidden-xs-down">
+          <div class="card roundtrip-card card-disabled hidden-xs-down">
             <h4 class="text-center">Month Pass</h4>
             <p></p>
             <h3 class="text-center">$10/Day</h3>
+            <p></p>
+            <p class="text-center">
+              Coming soon!
+            </p>
+          </div>
+        </div>
+
+        <br>
+        <h4 class="text-center">One way Passes</h4>
+
+        <div class="card-deck">
+          <div class="card roundtrip-card">
+            <h4 class="text-center">One way Pass</h4>
+            <p></p>
+            <h3 class="text-center">$7</h3>
+            <p></p>
+            <p class="text-center">
+              No commitment!
+            </p>
+            <button type="button" id="day-pass" class="btn btn-sm" data-toggle="modal" data-target="#purchase-pass" onclick="passPrice('one-way-day')">
+              Buy Day Pass
+            </button>
+          </div>
+          <div class="card roundtrip-card">
+            <h4 class="text-center">One way Week Pass</h4>
+            <p></p>
+            <h3 class="text-center">$6/day</h3>
+            <p></p>
+            <p class="text-center">$30 total</p>
+            <button type="button" id="week-pass" class="btn btn-sm" data-toggle="modal" data-target="#purchase-pass" onclick="passPrice('one-way-week')">
+              Buy Week Pass
+            </button>
+          </div>
+          <div class="card roundtrip-card card-disabled hidden-xs-down">
+            <h4 class="text-center">One way Month Pass</h4>
+            <p></p>
+            <h3 class="text-center">$5/day</h3>
             <p></p>
             <p class="text-center">
               Coming soon!

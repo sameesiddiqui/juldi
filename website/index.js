@@ -2,7 +2,7 @@ var express = require('express')
 var app = express()
 var mysql = require('mysql')
 var secret = require('./secret')
-var stripe = require('stripe')(secret.stripekeys.secret_key)
+var stripe = require('stripe')(secret.stripekeys.sk_test)
 var googleMapsClient = require('@google/maps').createClient({
   key: secret.googlekeys.maps
 })
@@ -35,14 +35,35 @@ app.get('/commuteinfo', function (req, res) {
 })
 
   //=========STRIPE PAYMENT HANDLING
-app.post('/order', function (req, res) {
+app.post('/order/:passType', function (req, res) {
   console.log(req.body)
   var token = req.body.stripeToken
+  var passPrice
+  var passDescrip
+console.log(req.params.passType)
+  switch (req.params.passType) {
+    case 'day':
+      passPrice = 1400
+      passDescrip = 'Day Pass'
+      break
+    case 'week':
+      passPrice = 6000
+      passDescrip = 'Week Pass'
+      break
+    case 'one-way-day':
+      passPrice = 700
+      passDescrip = 'One way day pass ' + req.body.timebtn
+      break
+    case 'one-way-week':
+      passPrice = 3000
+      passDescrip = 'One way week pass ' + req.body.timebtn
+      break
+  }
 
   var charge = stripe.charges.create({
-    amount: 6000,
+    amount: passPrice,
     currency: 'usd',
-    description: 'Juldi Week Pass',
+    description: passDescrip,
     receipt_email: req.body.cardholder_email,
     source: token
   }, function (err, charge) {
@@ -57,6 +78,7 @@ app.post('/order', function (req, res) {
       }
     }
     // order object to store
+    console.log(charge)
     var order = {
       name: req.body.cardholder_name,
       email: req.body.cardholder_email,

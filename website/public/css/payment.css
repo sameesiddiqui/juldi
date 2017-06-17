@@ -40,6 +40,10 @@ label > span {
   float: right;
 }
 
+.selectTime {
+  margin-left: 10px;
+}
+
 .field::-webkit-input-placeholder { color: #BBB; }
 .field::-moz-placeholder { color: #BBB; }
 .field:-ms-input-placeholder { color: #BBB; }
