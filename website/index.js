@@ -109,16 +109,15 @@ app.post('/order/:passType', function (req, res) {
     "serving you!</p> <br>" + "<p>-The Juldi Team</p>"
     //send confirmation email
     // setup email data with unicode symbols
-      let mailOptions = {
-          from: '"Juldi" <hello@juldi.org>', // sender address
-          to: order.email, // list of receivers
-          subject: 'Thanks for purchasing a pass! ✔', // Subject line
-          text: plaintext,
-          html: htmltext
-      }
-
-      sendMail(mailOptions)
-
+    let mailOptions = {
+        from: '"Juldi" <hello@juldi.org>', // sender address
+        to: order.email, // list of receivers
+        subject: 'Thanks for purchasing a pass! ✔', // Subject line
+        text: plaintext,
+        html: htmltext
+    }
+    
+    sendMail(mailOptions)
   })
   res.render('order_confirm.html')
 })
