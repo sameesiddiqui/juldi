@@ -6,8 +6,8 @@ var stripe = require('stripe')(secret.stripekeys.sk_test)
 var googleMapsClient = require('@google/maps').createClient({
   key: secret.googlekeys.maps
 })
+const mail = require('./lib/mail');
 
-const nodemailer = require('nodemailer')
 const bodyParser = require('body-parser')
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({extended: true}))
@@ -35,7 +35,7 @@ app.get('/commuteinfo', function (req, res) {
 })
 
   //=========STRIPE PAYMENT HANDLING
-app.post('/order/:passType', function (req, res) {
+app.post('/order/:passType', async (req, res) => {
   console.log(req.body)
   var token = req.body.stripeToken
   var passPrice
@@ -89,8 +89,16 @@ app.post('/order/:passType', function (req, res) {
     // console.log(order)
 
     //store charge data if successful
-    connectDB('routes', 'orders', order)
-
+    insert('juldi', 'orders', order).then((orderID) => {
+      let passInfo = {
+        passType: order.description,
+        passCode: orderID,
+        name: order.name,
+        startDate: 'Jun 19',
+        endDate: 'Jun 26'
+      }
+      mail.sendPass(passInfo, order.email);
+    })
 
     var plaintext = "Thanks for deciding to ride with Juldi!\n" +
     "This email is confirming the purchase of a pass from us:\n" +
@@ -109,15 +117,15 @@ app.post('/order/:passType', function (req, res) {
     "serving you!</p> <br>" + "<p>-The Juldi Team</p>"
     //send confirmation email
     // setup email data with unicode symbols
-    let mailOptions = {
+    let confirmMailOptions = {
         from: '"Juldi" <hello@juldi.org>', // sender address
         to: order.email, // list of receivers
         subject: 'Thanks for purchasing a pass! ✔', // Subject line
         text: plaintext,
         html: htmltext
     }
-    
-    sendMail(mailOptions)
+
+    mail.sendMail(confirmMailOptions)
   })
   res.render('order_confirm.html')
 })
@@ -167,7 +175,7 @@ app.post('/commuteinfo', function (req, res) {
   }
   console.log(route)
   // store route data
-  connectDB('routes', 'commuteInfo', route)
+  insert('juldi', 'commuteInfo', route)
 
   var plaintext = "Thanks for showing interest in riding with Juldi!\n" +
         "We're currently piloting our service and looking to serve a wider area. " +
@@ -191,7 +199,7 @@ app.post('/commuteinfo', function (req, res) {
         text: plaintext,
         html: htmlText
     }
-    sendMail(mailOptions)
+    mail.sendMail(mailOptions)
 
   res.render('commuteinfo.html')
   })
@@ -206,50 +214,54 @@ app.listen(8080, function () {
 })
 
 //store data in appropriate database
-function connectDB (db, table, obj) {
-    var pool = mysql.createPool({
-      connectionLimit: 20,
-      host     : secret.dbinfo.host,
-      socketPath: secret.dbinfo.socketPath,
-      user     : secret.dbinfo.user,
-      password : secret.dbinfo.password,
-      database : db
-    })
-    //console.log(pool)
-
-  pool.getConnection(function (error, connection) {
-    if (error) {
-      console.error(error)
-    }
-    var query = connection.query('insert into ' + table + ' set ?', obj, function (error, results, fields) {
-      if (error) {
-        throw error
-      }
-
-      console.log(query.sql)
-      console.log(results)
-    })
-
-    connection.release()
+function insert(db, table, obj) {
+  var pool = mysql.createPool({
+    connectionLimit: 20,
+    host     : secret.dbinfo.host,
+    socketPath: secret.dbinfo.socketPath,
+    user     : secret.dbinfo.user,
+    password : secret.dbinfo.password,
+    database : db
   })
+    //console.log(pool)
+  let promise = new Promise(function(resolve, reject) {
+    pool.getConnection(function (error, connection) {
+      if (error) {
+        console.error(error)
+        reject(error)
+      }
+      var query = connection.query('insert into ' + table + ' set ?', obj, function (error, results, fields) {
+        if (error) {
+          throw error
+        }
+
+        console.log(query.sql)
+        console.log(results)
+        resolve(results.insertId)
+      })
+
+      connection.release()
+    })
+  })
+
+  return promise
 }
 
-//send mail using gmail account
-function sendMail (message) {
-  // create reusable transporter object using the default SMTP transport
-  let transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-          user: secret.emailinfo.user,
-          pass: secret.emailinfo.pass
-      }
-  })
+function select(db, table, id) {
+  let pool = mysql.createPool({
+    connectionLimit: 20,
+    host: secret.dbinfo.host,
+    socketPath: secret.dbinfo.socketPath,
+    user: secret.dbinfo.user,
+    password: secret.dbinfo.password,
+    database: db
+  });
 
-  // send mail with defined transport object
-  transporter.sendMail(message, (error, info) => {
-      if (error) {
-          return console.log(error)
-      }
-      console.log('Message %s sent: %s', info.messageId, info.response)
+  pool.getConnection((err, conn) => {
+    if (err) {
+      console.error(err);
+    }
+
+    let query = connection.query('select * from ')
   })
 }
