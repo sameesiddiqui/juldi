@@ -47,7 +47,7 @@ label > span {
 .checkout-btn {
   float: left;
   display: block;
-  background: #666EE8;
+  background: #f45342;
   color: white;
   box-shadow: 0 7px 14px 0 rgba(49,49,93,0.10),
               0 3px 6px 0 rgba(0,0,0,0.08);
@@ -60,15 +60,16 @@ label > span {
   height: 40px;
   line-height: 38px;
   outline: none;
+  text-align: center;
 }
 
-.checkout-btn:focus {
+/*.checkout-btn:focus {
   background: #555ABF;
 }
 
 .checkout-btn:active {
   background: #43458B;
-}
+}*/
 
 .outcome {
   float: left;
